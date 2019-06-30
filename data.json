@@ -2,73 +2,73 @@ let data = [
     {
     productName: 'Sandisk Mirco SD',
     price: 43,
-    imgSrc: 'https: //images-na.ssl-images-amazon.com/images/I/41M0JdhK3PL._AA160_.jpg',
+    imgSrc: 'https://images-na.ssl-images-amazon.com/images/I/41M0JdhK3PL._AA160_.jpg',
     categories: 'New-Releases'
     },
     {
     productName: 'Wyze Camera v2',
     price: 37,
-    imgSrc: 'https: //images-na.ssl-images-amazon.com/images/I/41dFbSyyPsL._AA160_.jpg',
+    imgSrc: 'https://images-na.ssl-images-amazon.com/images/I/41dFbSyyPsL._AA160_.jpg',
     categories: 'New-Releases'
     },
     {
     productName: 'Echo Dot',
     price: 69,
-    imgSrc: 'https: //images-na.ssl-images-amazon.com/images/I/41CRnvYqmqL._AA160_.jpg',
+    imgSrc: 'https://images-na.ssl-images-amazon.com/images/I/41CRnvYqmqL._AA160_.jpg',
     categories: 'Sale'
     },
     {
     productName: 'Wyze Camera',
     price: 55,
-    imgSrc: 'https: //images-na.ssl-images-amazon.com/images/I/31dz6wCIWML._AA160_.jpg',
+    imgSrc: 'https://images-na.ssl-images-amazon.com/images/I/31dz6wCIWML._AA160_.jpg',
     categories: 'Food'
     },
     {
     productName: 'Anker Sound Buds',
     price: 32,
-    imgSrc: 'https: //images-na.ssl-images-amazon.com/images/I/31B+n7xrh4L._AA160_.jpg',
+    imgSrc: 'https://images-na.ssl-images-amazon.com/images/I/31B+n7xrh4L._AA160_.jpg',
     categories: 'Sale'
     },
     {
     productName: 'Anker Wireless Charger',
     price: 29,
-    imgSrc: 'https: //images-na.ssl-images-amazon.com/images/I/31tER0mi8wL._AA160_.jpg',
+    imgSrc: 'https://images-na.ssl-images-amazon.com/images/I/31tER0mi8wL._AA160_.jpg',
     categories: 'New-Releases'
     },
     {
     productName: 'Go Pro Hero 6',
     price: 529,
-    imgSrc: 'https: //images-na.ssl-images-amazon.com/images/I/31fRgbwaVGL._AA160_.jpg',
+    imgSrc: 'https://images-na.ssl-images-amazon.com/images/I/31fRgbwaVGL._AA160_.jpg',
     categories: 'New-Releases'
     },
     {
     productName: 'Samsung Galaxy A8',
     price: 189,
-    imgSrc: 'https: //m.media-amazon.com/images/I/41FIUOf1BHL._AC_UL436_.jpg',
+    imgSrc: 'https://m.media-amazon.com/images/I/41FIUOf1BHL._AC_UL436_.jpg',
     categories: 'New-Releases'
     },
     {
     productName: 'Kingston 250GB',
     price: 39,
-    imgSrc: 'https: //m.media-amazon.com/images/I/71JLh+nx3bL._AC_UL436_.jpg',
+    imgSrc: 'https://m.media-amazon.com/images/I/71JLh+nx3bL._AC_UL436_.jpg',
     categories: 'New-Releases'
     },
     {
     productName: 'Bose QC 35',
     price: 449,
-    imgSrc: 'https: //m.media-amazon.com/images/I/61r+E0oup6L._AC_UL436_.jpg',
+    imgSrc: 'https://m.media-amazon.com/images/I/61r+E0oup6L._AC_UL436_.jpg',
     categories: 'Electronics'
     },
     {
     productName: 'TLC TV 55"',
     price: 719,
-    imgSrc: 'https: //m.media-amazon.com/images/I/714ElWQ4JwL._AC_UL436_.jpg',
+    imgSrc: 'https://m.media-amazon.com/images/I/714ElWQ4JwL._AC_UL436_.jpg',
     categories: 'New-Releases'
     },
     {
     productName: 'Moto G7 Power',
     price: 259,
-    imgSrc: 'https: //m.media-amazon.com/images/I/51a5gUDC4sL._AC_UL436_.jpg',
+    imgSrc: 'https://m.media-amazon.com/images/I/51a5gUDC4sL._AC_UL436_.jpg',
     categories: 'New-Releases'
     }
 ];

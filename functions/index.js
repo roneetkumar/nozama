@@ -52,7 +52,7 @@ data.forEach(function(item) {
     <img src="${item.imgSrc}" onerror="this.src='assets/head_paper.png'">
     <a><h2> $${item.price} CAD </h2>
     <h1> ${item.productName}</h1> </a>
-    <button> View </button>
+    <button> VIEW </button>
     </div>
     `;
     $('main').innerHTML += card;

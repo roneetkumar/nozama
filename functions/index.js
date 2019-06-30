@@ -40,7 +40,7 @@ function filter() {
         if (!cards[i].classList.contains(category)) {
             cards[i].style.display = 'none';
         } else {
-            cards[i].style.display = 'initial';
+            cards[i].style.display = '';
         }
     }
 }
@@ -69,4 +69,16 @@ for (let i = 0; i < li.length; i++) {
     }
 }
 
-window.onload(filter());
+window.onload = filter();
+
+$('.menu').onclick = function() {
+    $('.navMenu').style.transform = 'translateX(0)';
+    $('.nav-overlay').style.display = 'block';
+    $('body').style.overflow = 'hidden';
+}
+
+$('.nav-overlay').onclick = function() {
+    $('.navMenu').style.transform = 'translateX(-312px)';
+    $('.nav-overlay').style.display = 'none';
+    $('body').style.overflow = 'initial';
+}

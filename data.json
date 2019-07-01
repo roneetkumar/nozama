@@ -5,7 +5,7 @@ let data = [{
         categories: 'New-Releases'
     },
     {
-        productName: 'Wyze Camera v2',
+        productName: 'Wyze Camera v3',
         price: 37,
         imgSrc: 'https://images-na.ssl-images-amazon.com/images/I/41dFbSyyPsL._AA160_.jpg',
         categories: 'New-Releases'

@@ -6,7 +6,6 @@ let cards = $('main').getElementsByClassName('card');
 let category = $('.selected').innerHTML.toLowerCase();
 let buttons = $('main').getElementsByTagName('button');
 
-
 window.onscroll = function() {
     let fab = $('.fab svg');
     let hook = $('#hook');
@@ -45,6 +44,30 @@ function filter() {
         }
     }
 }
+
+
+function sortList() {
+    data = data.slice(0);
+    data.sort(function(a, b) {
+        let x = a.productName.toLowerCase();
+        let y = b.productName.toLowerCase();
+        return x < y ? -1 : x > y ? 1 : 0;
+    });
+    console.log(data);
+}
+
+function sortListp() {
+    data = data.slice(0);
+    data.sort(function(a, b) {
+        let x = a.price;
+        let y = b.price;
+        return x < y ? -1 : x > y ? 1 : 0;
+    });
+    console.log(data);
+}
+
+sortList();
+
 
 data.forEach(function(item) {
     let category = item.categories.toLowerCase();
@@ -101,7 +124,7 @@ for (let i = 0; i < buttons.length; i++) {
 
         data.forEach(function(item) {
             if (selectedProduct == item.productName) {
-                console.log(item.price);
+                // console.log(item.price);
                 const productInfo = `
                 <h4>${item.productName}</h4>
                 <h4>${item.price}</h4>

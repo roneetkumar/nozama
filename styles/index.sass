@@ -30,12 +30,11 @@ body
 nav#top
     display: grid
     grid-row-gap: 2em
-    // padding: 20px 20px 0
+    padding: 20px 12px 0
     box-sizing: border-box
     width: 100%
     background: #212121
     .topbar
-        padding: 20px 20px 0
         display: grid
         grid-template-columns: max-content max-content 1fr max-content
         align-items: center
@@ -110,7 +109,7 @@ nav#top
     .searchOpen
         @media(max-width:500px)
             grid-template-columns: 1fr
-            padding: 20px 5px 0
+            // padding: 20px 5px 0
         svg.menu,img
             @media(max-width:500px)
                 display: none
@@ -126,7 +125,7 @@ nav#top
         max-width: max-content
         display: grid
         overflow: hidden
-        padding: 0 12px
+        // padding: 0 12px
         overflow-x: scroll
         grid-template-columns: repeat(9,max-content)
         grid-column-gap: .8em
@@ -136,6 +135,8 @@ nav#top
         &::-webkit-scrollbar
             width: 0
             height: 0
+            background: rgba(0,0,0,0)
+            opacity: 0
         li
             color: #fff
             height: 32px
@@ -167,9 +168,15 @@ nav.navMenu
     transition: transform 255ms ease-in-out
     will-change: transform
 
-header,footer
+header
     height: 400px
     background: $header
+
+header
+    // background-image: url("../assets/2.png")
+    // background-position: center
+    // background-repeat: no-repeat
+    // background-size: contain
 
 main
     text-align: center
@@ -188,6 +195,7 @@ main
         box-sizing: border-box
         img
             height: 150px
+            // width: 150px
         h2
             margin: 10px
         h1
@@ -213,6 +221,19 @@ main
 footer
     background: linear-gradient(360deg, #212121 0%, rgba(33, 33, 33, 0.8) 100%)
     margin-top: 60px
+    color: #fff
+    display: flex
+    justify-content: center
+    height: 400px
+    ul
+        // display: inline-block
+        margin: 20px
+        strong
+            color: $accent-light
+        li
+    span
+        display: block
+        margin: auto
 
 .fab
     width: 56px

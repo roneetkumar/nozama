@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,26 +8,33 @@
     <title>Nozama</title>
     <link rel="stylesheet" href="styles/index.min.css">
 </head>
+
 <body>
     <div class="wrapper">
         <nav id="top">
             <div class="topbar">
                 <!-- menu icon -->
-                <svg class="menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M4 18h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zm0-5h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zM3 7c0 .55.45 1 1 1h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1z"/></svg>
+                <svg class="menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="none" d="M0 0h24v24H0V0z" />
+                    <path d="M4 18h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zm0-5h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zM3 7c0 .55.45 1 1 1h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1z" /></svg>
                 <!-- logo -->
                 <img src="assets/nozama-logo-white.png" alt="">
 
                 <!-- search bar -->
                 <div class="search">
-                    <svg class="search-btn" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M15.5 14h-.79l-.28-.27c1.2-1.4 1.82-3.31 1.48-5.34-.47-2.78-2.79-5-5.59-5.34-4.23-.52-7.79 3.04-7.27 7.27.34 2.8 2.56 5.12 5.34 5.59 2.03.34 3.94-.28 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                    <svg class="search-btn" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="none" d="M0 0h24v24H0V0z" />
+                        <path
+                            d="M15.5 14h-.79l-.28-.27c1.2-1.4 1.82-3.31 1.48-5.34-.47-2.78-2.79-5-5.59-5.34-4.23-.52-7.79 3.04-7.27 7.27.34 2.8 2.56 5.12 5.34 5.59 2.03.34 3.94-.28 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                        </svg>
                     <input onkeyup="searchFunction()" id="myinput" type="text" placeholder="Search Products">
-                    <svg class="close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-
-
+                    <svg class="close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                        <path d="M0 0h24v24H0z" fill="none" /></svg>
                 </div>
                 <span>Sign Up | Sign In</span>
             </div>
-
+            <!-- filter links -->
             <ul class="link-list">
                 <li class="selected">New-Releases</li>
                 <li>Electronics</li>
@@ -39,16 +47,42 @@
                 <li>Sell</li>
             </ul>
         </nav>
+    <!-- side nav menu -->
         <nav class="navMenu"></nav>
+        <!-- header -->
         <header></header>
+        <!-- main content -->
         <main></main>
-        <footer id="bottom"></footer>
+        <!-- footer -->
+        <footer id="bottom">
+            <!-- <ul type="none">
+                <strong><li>Get to Know Us</li></strong>
+                <li>Careers</li>
+                <li>Amazon and Our Planet</li>
+                <li>Investor Relations</li>
+                <li>Press Releases</li>
+                <li>Sell on Amazon</li>
+            </ul>
+            <ul type="none">
+                <strong><li>Make Money with Us</li></strong>
+                <li>Sell Under Private Brands</li>
+                <li>Amazon Associates</li>
+                <li>Sell on Amazon Handmade</li>
+                <li>Advertise Your Products</li>
+                <li>Independently Publish with Us</li>
+            </ul>
+            <span>© 2008-2019, Amazon.com, Inc. or its affiliates</span> -->
+        </footer>
         <a id="hook" href="#bottom">
-        <div class="fab" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/><path fill="none" d="M0 0h24v24H0V0z"/></svg></div></a>
+            <div class="fab"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+                    <path fill="none" d="M0 0h24v24H0V0z" /></svg></div>
+        </a>
     </div>
     <div class="nav-overlay"></div>
     <div class="product-info"></div>
 </body>
 <script src="data.json" charset="utf-8"></script>
 <script src="functions/index.js" charset="utf-8"></script>
+
 </html>

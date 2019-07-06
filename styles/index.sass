@@ -33,7 +33,7 @@ nav#top
     padding: 20px 12px 0
     box-sizing: border-box
     width: 100%
-    background: #212121
+    background: linear-gradient(360deg, #a6e8cd 0%, rgb(80, 213, 201) 100%)
     .topbar
         display: grid
         grid-template-columns: max-content max-content 1fr max-content
@@ -170,19 +170,29 @@ nav.navMenu
 
 header
     height: 400px
-    background: $header
-
-header
-    // background-image: url("../assets/2.png")
-    // background-position: center
-    // background-repeat: no-repeat
-    // background-size: contain
+    // background-image: url("../assets/1.jpg")
+    background: linear-gradient(180deg, #fff 90%, rgba(#fff,.0) 100%)
+    background-position: top center
+    background-size: cover
+    background-repeat: no-repeat
+    text-align: center
+    overflow: scroll
+    display: flex
+    &::-webkit-scrollbar
+        width: 0
+        height: 0
+        background: rgba(0,0,0,0)
+        opacity: 0
+    img
+        display: inline-block
+        height: 400px
 
 main
     text-align: center
     max-width: 1400px
     margin: auto
     margin-top: -200px
+    min-height: 500px
     .card
         position: relative
         width: 280px
@@ -219,7 +229,7 @@ main
                 color: #fff
 
 footer
-    background: linear-gradient(360deg, #212121 0%, rgba(33, 33, 33, 0.8) 100%)
+    background: linear-gradient(360deg,rgb(80, 213, 201) 0%, rgba(#fff,0) 100%)
     margin-top: 60px
     color: #fff
     display: flex
@@ -271,18 +281,46 @@ footer
     width: 500px
     height: 500px
     left: 50%
-    transform: translate(-50%,100%)
-    top: 50%
+    transform: translate(-50%,0%)
+    top: 110%
     background: #fff
     position: fixed
     border-radius: 4px
     box-shadow: 0 0 50px rgba(#000,.4)
     transition: all 255ms ease-in-out
     will-change: transform
+    text-align: center
+    img
+        height: 30%
+        padding: 40px
+    h4
+        margin: 10px 0
+        // font-size: 20px  
+    .closeCard
+        position: absolute
+        display: none
+        width: 28px
+        height: 28px
+        fill: #212121
+        padding: 10px
+        border-radius: 50%
+        box-shadow: none
+        background: #fff
+        right: 10px
+        top: 10px
+        background: rgba(#000,.1)
+        &:hover
+            background: rgba(#000,.2)
     @media(max-width: 756px)
         width: 100%
         height: 100%
         border-radius: 0
+        .closeCard
+            display: initial
 
 .isOpened
     transform: translate(-50%,-50%)
+    top: 50%
+    // img
+    //     width: 70%
+    //     padding: 40px

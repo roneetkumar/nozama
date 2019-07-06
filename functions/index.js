@@ -45,7 +45,6 @@ function filter() {
     }
 }
 
-
 function sortList() {
     data = data.slice(0);
     data.sort(function(a, b) {
@@ -53,7 +52,6 @@ function sortList() {
         let y = b.productName.toLowerCase();
         return x < y ? -1 : x > y ? 1 : 0;
     });
-    console.log(data);
 }
 
 function sortListp() {
@@ -95,11 +93,63 @@ for (let i = 0; i < li.length; i++) {
 
 window.onload = filter();
 
+// let img = document.querySelectorAll('header img');
+// // let i = 0;
+// setInterval(function() {
+//     // console.log(img[i]);
+//     // i++;
+// }, 1000);
+
+
 $('.menu').onclick = function() {
     $('.navMenu').style.transform = 'translateX(0)';
     $('.nav-overlay').style.display = 'block';
     $('body').style.overflow = 'hidden';
     $('.search').style.zIndex = '0';
+}
+
+
+for (let i = 0; i < buttons.length; i++) {
+    buttons[i].onclick = function() {
+        $('.product-info').classList.add('isOpened');
+        let selectedProduct = this.parentElement.querySelector('h1').innerHTML;
+        $('.nav-overlay').style.display = 'block';
+        $('.search').style.zIndex = '0';
+        $('body').style.overflow = 'hidden';
+
+        data.forEach(function(item) {
+            if (selectedProduct == item.productName) {
+                const productInfo = `
+                <svg class="closeCard" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                    <path d="M0 0h24v24H0z" fill="none" /></svg>
+                <img src='${item.imgSrc}'>
+                <h1>${item.productName}</h1>
+                <h1>$${item.price} CAD</h1>
+                <h3>${item.category}</h3>
+                `;
+
+                $('.product-info').innerHTML = productInfo;
+
+                $('.closeCard').onclick = function() {
+                    $('.product-info').classList.remove('isOpened');
+                    $('.nav-overlay').style.display = 'none';
+                    $('body').style.overflow = 'initial';
+                    console.log(this);
+                }
+            }
+        });
+    }
+}
+
+$('.close').onclick = function(event) {
+    $('.topbar').classList.remove('searchOpen');
+    $('#myinput').value = "";
+    searchFunction();
+    $('.nav-overlay').style.display = 'none';
+    this.style.display = 'none';
+    filter();
+    event.stopPropagation();
 }
 
 $('.nav-overlay').onclick = function() {
@@ -114,40 +164,8 @@ $('.nav-overlay').onclick = function() {
     }
 }
 
-
-for (let i = 0; i < buttons.length; i++) {
-    buttons[i].onclick = function() {
-        $('.product-info').classList.add('isOpened');
-        $('.nav-overlay').style.display = 'block';
-        let selectedProduct = this.parentElement.querySelector('h1').innerHTML;
-        $('.search').style.zIndex = '0';
-
-        data.forEach(function(item) {
-            if (selectedProduct == item.productName) {
-                // console.log(item.price);
-                const productInfo = `
-                <h4>${item.productName}</h4>
-                <h4>${item.price}</h4>
-                <img src='${item.imgSrc}'>
-                <h4>${item.category}</h4>
-                `;
-
-                $('.product-info').innerHTML = productInfo;
-            }
-        });
-    }
-}
-
 $('.search').onclick = function() {
     $('.topbar').classList.add('searchOpen');
     $('.nav-overlay').style.display = 'block';
-}
-
-$('.close').onclick = function(event) {
-    $('.topbar').classList.remove('searchOpen');
-    $('#myinput').value = "";
-    searchFunction();
-    $('.nav-overlay').style.display = 'none';
-    $('.close').style.display = 'none';
-    event.stopPropagation();
+    $('body').style.overflow = 'hidden';
 }

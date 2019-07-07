@@ -1,5 +1,7 @@
 let $ = (ele) => document.querySelector(ele);
 
+let colorValues = ['#304FFE', '#5D737E', '#9067C6', '#00BCD4'];
+let color = colorValues[Math.floor(Math.random() * colorValues.length)];
 
 let li = $('ul.link-list').getElementsByTagName('li');
 let cards = $('main').getElementsByClassName('card');
@@ -91,15 +93,12 @@ for (let i = 0; i < li.length; i++) {
     }
 }
 
-window.onload = filter();
-
-// let img = document.querySelectorAll('header img');
-// // let i = 0;
-// setInterval(function() {
-//     // console.log(img[i]);
-//     // i++;
-// }, 1000);
-
+window.onload = function() {
+    filter();
+    // $('nav#top').style.background = color;
+    $('header').style.background = 'linear-gradient(360deg, rgba(0,0,0,0) 0%, ' + color + ' 100%)';
+    $('footer').style.background = 'linear-gradient(360deg, ' + color + ' 0%, rgba(0,0,0,0) 100%';
+}
 
 $('.menu').onclick = function() {
     $('.navMenu').style.transform = 'translateX(0)';
@@ -107,7 +106,6 @@ $('.menu').onclick = function() {
     $('body').style.overflow = 'hidden';
     $('.search').style.zIndex = '0';
 }
-
 
 for (let i = 0; i < buttons.length; i++) {
     buttons[i].onclick = function() {
@@ -119,15 +117,22 @@ for (let i = 0; i < buttons.length; i++) {
 
         data.forEach(function(item) {
             if (selectedProduct == item.productName) {
+                // let categories = item.categories.split(' ');
+                // let category;
+                // let i = 0;
+                // while (categories.length > i) {
+                //     category += '#' + categories[i++];
+                // }
                 const productInfo = `
                 <svg class="closeCard" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                     <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
                     <path d="M0 0h24v24H0z" fill="none" /></svg>
                 <img src='${item.imgSrc}'>
-                <h1>${item.productName}</h1>
+                <h2>${item.productName}</h2>
                 <h1>$${item.price} CAD</h1>
-                <h3>${item.category}</h3>
+                <h5></h5>
                 `;
+
 
                 $('.product-info').innerHTML = productInfo;
 

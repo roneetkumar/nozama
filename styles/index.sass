@@ -2,16 +2,14 @@
 
 $accent-dark: #EF6C00
 $accent-light: #FF9800
-$accent-gradient: linear-gradient(135deg, #FF9800 20%, $accent-dark 100%)
-$background: #f5f5f5
-$header: linear-gradient(180deg, #212121 0%, rgba(33, 33, 33, 0.8) 100%)
+$accent-gradient: linear-gradient(135deg, $accent-light 20%, $accent-dark 100%)
+$background: #fafafa
 
 @keyframes ripple
     0%
         box-shadow: 0 0 0 0px rgba($accent-dark,1)
     100%
         box-shadow: 0 0 0 30px rgba($accent-dark,0)
-
 
 *
     margin: 0
@@ -27,157 +25,14 @@ body
 .wrapper
     overflow: hidden
 
-nav#top
-    display: grid
-    grid-row-gap: 2em
-    padding: 20px 12px 0
-    box-sizing: border-box
-    width: 100%
-    background: linear-gradient(360deg, #a6e8cd 0%, rgb(80, 213, 201) 100%)
-    .topbar
-        display: grid
-        grid-template-columns: max-content max-content 1fr max-content
-        align-items: center
-        grid-column-gap: 1em
-        @media(max-width:756px)
-            grid-template-columns: max-content max-content 1fr
-        @media(max-width:500px)
-            grid-template-columns: max-content 1fr max-content
-        svg.menu
-            width: 28px
-            height: 28px
-            fill: #fff
-            padding: 10px
-            border-radius: 50%
-            &:hover
-                background: rgba(#fff,.1)
-
-        img
-            height: 46px
-            @media(max-width:500px)
-                justify-self: center
-        .search
-            display: grid
-            grid-template-columns: max-content 1fr max-content
-            width: 100%
-            max-width: 900px
-            min-width: 48px
-            height: 48px
-            background: #fff
-            border-radius: 50px
-            overflow: hidden
-            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12)
-            z-index: 1
-            margin: auto
-            // transition: all 200ms ease-in-out
-            @media(max-width:500px)
-                justify-self: right
-                margin: 0
-                max-width: 48px
-            svg.close, svg.search-btn
-                width: 28px
-                height: 28px
-                fill: #212121
-                padding: 10px
-                margin: 0
-                border-radius: 50%
-                box-shadow: none
-                background: #fff
-            svg.close
-                display: none
-                &:hover
-                    background: rgba(#000,.1)
-            input
-                display: inline-block
-                border: 0
-                outline: 0
-                color: #212121
-                box-sizing: border-box
-                font-size: 17px
-                padding-left: 10px
-        span
-            color: #fff
-            letter-spacing: 1px
-            font-weight: bold
-            font-size: 20px
-            &:hover
-                text-decoration: underline
-            @media(max-width:756px)
-                display: none
-
-
-    .searchOpen
-        @media(max-width:500px)
-            grid-template-columns: 1fr
-            // padding: 20px 5px 0
-        svg.menu,img
-            @media(max-width:500px)
-                display: none
-        .search
-            z-index: 1 !important
-            @media(max-width:500px)
-                max-width: 100%
-                border-radius: 4px
-
-    ul.link-list
-        list-style: none
-        width: 100%
-        max-width: max-content
-        display: grid
-        overflow: hidden
-        // padding: 0 12px
-        overflow-x: scroll
-        grid-template-columns: repeat(9,max-content)
-        grid-column-gap: .8em
-        margin: auto
-        padding-bottom: 10px
-        align-items: center
-        &::-webkit-scrollbar
-            width: 0
-            height: 0
-            background: rgba(0,0,0,0)
-            opacity: 0
-        li
-            color: #fff
-            height: 32px
-            display: inline-block
-            padding: 0 12px
-            border-radius: 50px
-            user-select: none
-            font-size: 14px
-            font-weight: bold
-            letter-spacing: 1px
-            line-height: 33px
-            text-transform: uppercase
-            background: $accent-gradient
-            box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.4)
-        .selected
-            color: $accent-dark
-            background: #fff
-
-nav.navMenu
-    width: 85%
-    max-width: 302px
-    background: #fff
-    height: 100%
-    position: fixed
-    top: 0
-    left: 0
-    z-index: 1
-    transform: translateX(-312px)
-    transition: transform 255ms ease-in-out
-    will-change: transform
-
 header
-    height: 400px
-    // background-image: url("../assets/1.jpg")
-    background: linear-gradient(180deg, #fff 90%, rgba(#fff,.0) 100%)
-    background-position: top center
-    background-size: cover
-    background-repeat: no-repeat
-    text-align: center
-    overflow: scroll
-    display: flex
+    height: 500px
+    // background-position: top center
+    // background-size: cover
+    // background-repeat: no-repeat
+    // text-align: center
+    // overflow: scroll
+    // display: flex
     &::-webkit-scrollbar
         width: 0
         height: 0
@@ -186,6 +41,147 @@ header
     img
         display: inline-block
         height: 400px
+
+    nav#top
+        display: grid
+        grid-row-gap: 1em
+        padding: 20px 12px 0
+        box-sizing: border-box
+        width: 100%
+        .topbar
+            display: grid
+            grid-template-columns: max-content max-content 1fr max-content
+            align-items: center
+            grid-column-gap: 1em
+            @media(max-width:756px)
+                grid-template-columns: max-content max-content 1fr
+            @media(max-width:500px)
+                grid-template-columns: max-content 1fr max-content
+            svg.menu
+                width: 28px
+                height: 28px
+                fill: #fff
+                padding: 10px
+                border-radius: 50%
+                &:hover
+                    background: rgba(#fff,.1)
+
+            img
+                height: 46px
+                @media(max-width:500px)
+                    justify-self: center
+            .search
+                display: grid
+                grid-template-columns: max-content 1fr max-content
+                width: 100%
+                max-width: 900px
+                min-width: 48px
+                height: 48px
+                background: #fff
+                border-radius: 50px
+                overflow: hidden
+                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),0 1px 5px 0 rgba(0, 0, 0, 0.12),0 3px 1px -2px rgba(0, 0, 0, 0.2)
+                z-index: 1
+                margin: auto
+                @media(max-width:500px)
+                    justify-self: right
+                    margin: 0
+                    max-width: 48px
+                svg.close, svg.search-btn
+                    width: 28px
+                    height: 28px
+                    fill: #212121
+                    padding: 10px
+                    margin: 0
+                    border-radius: 50%
+                    box-shadow: none
+                    background: #fff
+                svg.close
+                    display: none
+                    &:hover
+                        background: rgba(#000,.1)
+                input
+                    display: inline-block
+                    border: 0
+                    outline: 0
+                    color: #212121
+                    box-sizing: border-box
+                    font-size: 17px
+                    padding-left: 10px
+            span
+                color: #fff
+                letter-spacing: 1px
+                font-weight: bold
+                font-size: 20px
+                padding-right: 10px
+                &:hover
+                    text-decoration: underline
+                @media(max-width:756px)
+                    display: none
+
+
+        .searchOpen
+            @media(max-width:500px)
+                grid-template-columns: 1fr
+            svg.menu,img
+                @media(max-width:500px)
+                    display: none
+            .search
+                z-index: 1 !important
+                @media(max-width:500px)
+                    max-width: 100%
+                    border-radius: 4px
+
+        ul.link-list
+            list-style: none
+            width: 100%
+            max-width: max-content
+            display: grid
+            overflow: hidden
+            overflow-x: scroll
+            grid-template-columns: repeat(9,max-content)
+            grid-column-gap: .8em
+            margin: auto
+            padding: 10px 0
+            align-items: center
+            &::-webkit-scrollbar
+                width: 0
+                height: 0
+                background: rgba(0,0,0,0)
+                opacity: 0
+            li
+                color: #fff
+                height: 32px
+                display: inline-block
+                padding: 0 12px
+                border-radius: 50px
+                user-select: none
+                font-size: 14px
+                font-weight: bold
+                letter-spacing: 1px
+                line-height: 33px
+                text-transform: uppercase
+                background: $accent-gradient
+                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),0 1px 5px 0 rgba(0, 0, 0, 0.12),0 3px 1px -2px rgba(0, 0, 0, 0.2)
+            .selected
+                color: $accent-dark
+                background: #fff
+
+    nav.navMenu
+        width: 85%
+        max-width: 302px
+        background: #fff
+        height: 100%
+        position: fixed
+        top: 0
+        left: 0
+        box-shadow: 4px 0 12px rgba(0,0,0,0.2)
+        z-index: 1
+        transform: translateX(-312px)
+        transition: transform 255ms ease-in-out
+        will-change: transform
+
+
 
 main
     text-align: center
@@ -199,13 +195,14 @@ main
         margin: 1em
         background: #fff
         border-radius: 8px
-        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.16)
+        box-shadow: 0px 2px 6px rgba(0,0,0,0.2)
+        box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14),0 1px 8px 0 rgba(0, 0, 0, 0.12),0 3px 3px -2px rgba(0, 0, 0, 0.4)
+
         display: inline-block
         padding: 20px 0
         box-sizing: border-box
         img
             height: 150px
-            // width: 150px
         h2
             margin: 10px
         h1
@@ -222,28 +219,25 @@ main
             outline: 0
             color: $accent-dark
             font-weight: bold
-            border: 2px solid $accent-dark
+            border: 1px solid $accent-dark
             transition: all 155ms ease-in-out
             &:hover
                 background: $accent-gradient
                 color: #fff
 
 footer
-    background: linear-gradient(360deg,rgb(80, 213, 201) 0%, rgba(#fff,0) 100%)
-    margin-top: 60px
     color: #fff
     display: flex
     justify-content: center
-    height: 400px
-    ul
-        // display: inline-block
-        margin: 20px
-        strong
-            color: $accent-light
-        li
-    span
-        display: block
-        margin: auto
+    height: 300px
+    position: relative
+    z-index: -1
+    align-items: flex-end
+    text-align: center
+    color: rgba(#000,.6)
+    padding: 10px 20px
+    margin-top: 20px
+    box-sizing: border-box
 
 .fab
     width: 56px
@@ -257,6 +251,7 @@ footer
     background: $accent-gradient
     transition: all 400ms cubic-bezier(0.18, 0.89, 0.32, 1.28)
     will-change: transform
+    box-shadow:  0 4px 5px 0 rgba(0, 0, 0, 0.14),0 1px 10px 0 rgba(0, 0, 0, 0.12),0 2px 4px -1px rgba(0, 0, 0, 0.4)
     animation: ripple 1.1s ease-in-out infinite
     svg
         @include centered
@@ -276,26 +271,31 @@ footer
     position: fixed
     display: none
     top: 0
+    transition: all 500ms ease-in-out
 
 .product-info
     width: 500px
     height: 500px
     left: 50%
-    transform: translate(-50%,0%)
-    top: 110%
+    transform: translate(-50%,600px) scale(0)
+    top: 50%
     background: #fff
     position: fixed
     border-radius: 4px
-    box-shadow: 0 0 50px rgba(#000,.4)
-    transition: all 255ms ease-in-out
+    box-shadow: 0 0 50px rgba(#000,0.3)
+    transition: all 255ms ease
     will-change: transform
     text-align: center
+    // opacity: 0
     img
         height: 30%
-        padding: 40px
-    h4
-        margin: 10px 0
-        // font-size: 20px  
+        padding: 40px 0
+    h1
+        margin-top: 20px
+        margin-bottom: 10px
+    h5
+        color: rgba(#000,.8)
+
     .closeCard
         position: absolute
         display: none
@@ -319,8 +319,6 @@ footer
             display: initial
 
 .isOpened
-    transform: translate(-50%,-50%)
+    transform: translate(-50%,-50%) scale(1)
     top: 50%
-    // img
-    //     width: 70%
-    //     padding: 40px
+    // opacity: 1

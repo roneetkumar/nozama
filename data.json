@@ -1,185 +1,227 @@
-let data = [{
-        productName: 'Sandisk Mirco SD',
+let user = [{
+    name: {
+        first: 'roneet',
+        last: 'kumar',
+        id: 'roneet'
+    },
+    password: '1111',
+    email: 'roneetparida@gmail.com',
+},{
+    name: {
+        first: 'Rupinder',
+        last: 'Virdi',
+        id: 'roop'
+    },
+    password: '2222',
+    email: 'virdirocking.96@gmail.com',
+},{
+    name: {
+        first: 'vinay',
+        last: 'rao',
+        id: 'vinay'
+    },
+    password: '3333',
+    email: 'vinay@gmail.com',
+},{
+    name: {
+        first: 'reshma',
+        last: 'shaikh',
+        id: 'resh'
+    },
+    password: '4444',
+    email: 'reshma@gmail.com',
+},{
+    name: {
+        first: 'davinder',
+        last: 'sharma',
+        id: 'davinder'
+    },
+    password: '5555',
+    email: 'davinder@gmail.com',
+}];
+
+let product = [{
+        name: 'Sandisk Mirco SD',
         price: 43,
         imgSrc: 'https://images-na.ssl-images-amazon.com/images/I/41M0JdhK3PL._AA160_.jpg',
         categories: 'New-Releases Electronics'
     },
     {
-        productName: 'Wyze Camera v2',
+        name: 'Wyze Camera v2',
         price: 37,
         imgSrc: 'https://images-na.ssl-images-amazon.com/images/I/41dFbSyyPsL._AA160_.jpg',
         categories: 'New-Releases Electronics'
     },
     {
-        productName: 'Echo Dot',
+        name: 'Echo Dot',
         price: 69,
         imgSrc: 'https://images-na.ssl-images-amazon.com/images/I/41CRnvYqmqL._AA160_.jpg',
         categories: 'Sale Electronics'
     },
     {
-        productName: 'Wyze Camera',
+        name: 'Wyze Camera',
         price: 55,
         imgSrc: 'https://images-na.ssl-images-amazon.com/images/I/31dz6wCIWML._AA160_.jpg',
         categories: 'Electronics'
     },
     {
-        productName: 'Anker Sound Buds',
+        name: 'Anker Sound Buds',
         price: 32,
         imgSrc: 'https://images-na.ssl-images-amazon.com/images/I/31B+n7xrh4L._AA160_.jpg',
         categories: 'Sale Electronics'
     },
     {
-        productName: 'Anker Wireless Charger',
+        name: 'Anker Wireless Charger',
         price: 29,
         imgSrc: 'https://images-na.ssl-images-amazon.com/images/I/31tER0mi8wL._AA160_.jpg',
         categories: 'New-Releases Electronics'
     },
     {
-        productName: 'Go Pro Hero 6',
+        name: 'Go Pro Hero 6',
         price: 529,
         imgSrc: 'https://images-na.ssl-images-amazon.com/images/I/31fRgbwaVGL._AA160_.jpg',
         categories: 'Sale Electronics'
     },
     {
-        productName: 'Samsung Galaxy A8',
+        name: 'Samsung Galaxy A8',
         price: 189,
         imgSrc: 'https://m.media-amazon.com/images/I/41FIUOf1BHL._AC_UL436_.jpg',
         categories: 'New-Releases Electronics'
     },
     {
-        productName: 'Kingston 512GB',
+        name: 'Kingston 512GB',
         price: 79,
         imgSrc: 'https://m.media-amazon.com/images/I/71JLh+nx3bL._AC_UL436_.jpg',
         categories: 'New-Releases Electronics'
     },
     {
-        productName: 'Bose QC 35',
+        name: 'Bose QC 35',
         price: 449,
         imgSrc: 'https://m.media-amazon.com/images/I/61r+E0oup6L._AC_UL436_.jpg',
         categories: 'Electronics'
     },
     {
-        productName: 'TLC TV 55"',
+        name: 'TLC TV 55"',
         price: 719,
         imgSrc: 'https://m.media-amazon.com/images/I/714ElWQ4JwL._AC_UL436_.jpg',
         categories: 'New-Releases Electronics'
     },
     {
-        productName: 'Moto G7 Power',
+        name: 'Moto G7 Power',
         price: 259,
         imgSrc: 'https://m.media-amazon.com/images/I/51a5gUDC4sL._AC_UL436_.jpg',
         categories: 'New-Releases Electronics'
     },
     {
-        productName: 'Mpow Flame Headphones',
+        name: 'Mpow Flame Headphones',
         price: 28,
         imgSrc: 'https://m.media-amazon.com/images/I/61Uh025cziL._AC_UL436_.jpg',
         categories: 'Electronics'
     },
     {
-        productName: 'AMD YD2600BBAFBOX',
+        name: 'AMD YD2600BBAFBOX',
         price: 232,
         imgSrc: 'https://m.media-amazon.com/images/I/51W-O4Jn9EL._AC_UL436_.jpg',
         categories: 'Electronics'
     },
     {
-        productName: 'Logitech G203 Prodigy',
+        name: 'Logitech G203 Prodigy',
         price: 29,
         imgSrc: 'https://m.media-amazon.com/images/I/71BmDZ6u22L._AC_UL436_.jpg',
-        categories: 'Electronics'
+        categories: 'Electronics New-Releases'
     },
     {
-        productName: 'Asus C202SA-YS02 11.6"',
+        name: 'Asus C202SA-YS02 11.6"',
         price: 259,
         imgSrc: 'https://m.media-amazon.com/images/I/71S3Rnugf7L._AC_UL436_.jpg',
-        categories: 'Electronics Best-Sellers'
+        categories: 'Electronics Best-Sellers New-Releases'
     },
     {
-        productName: 'Corsair 16GB',
+        name: 'Corsair 16GB',
         price: 100,
         imgSrc: 'https://m.media-amazon.com/images/I/81mSADb0qhL._AC_UL436_.jpg',
-        categories: 'Electronics'
+        categories: 'Electronics New Releases'
     },
     {
-        productName: 'Huawei Honor 8X',
+        name: 'Huawei Honor 8X',
         price: 299,
         imgSrc: 'https://m.media-amazon.com/images/I/81uuNY+2tZL._AC_UL436_.jpg',
-        categories: 'Electronics'
+        categories: 'Electronics New-Releases'
     },
     {
-        productName: 'Samsung Galaxy A10',
+        name: 'Samsung Galaxy A10',
         price: 180,
         imgSrc: 'https://m.media-amazon.com/images/I/61U05T8Bl9L._AC_UL436_.jpg',
-        categories: 'Electronics Best-Sellers'
+        categories: 'Electronics Best-Sellers New-Releases'
     },
     {
-        productName: 'Arespark Earbuds',
+        name: 'Arespark Earbuds',
         price: 59,
         imgSrc: 'https://m.media-amazon.com/images/I/61FZJH0OzxL._AC_UL436_.jpg',
-        categories: 'Electronics Sale'
+        categories: 'Electronics Sale New-Releases'
     },
     {
-        productName: 'NVIDIA SHIELD TV',
+        name: 'NVIDIA SHIELD TV',
         price: 229,
         imgSrc: 'https://m.media-amazon.com/images/I/518UNbV34gL._AC_UL436_.jpg',
-        categories: 'Electronics'
+        categories: 'Electronics New-Releases'
     },
     {
-        productName: 'Kellogg\'s Nutri - Grain ',
+        name: 'Kellogg\'s Nutri - Grain ',
         price: 5,
         imgSrc: 'https://m.media-amazon.com/images/I/A1v3LoyheSL._AC_UL320_.jpg',
         categories: 'Food'
     },
     {
-        productName: 'Yupik Cashews',
+        name: 'Yupik Cashews',
         price: 24,
         imgSrc: 'https://m.media-amazon.com/images/I/91rm+KZtiML._AC_UL320_.jpg',
         categories: 'Food'
     },
     {
-        productName: 'McCafé Premium',
+        name: 'McCafé Premium',
         price: 229,
         imgSrc: 'https://m.media-amazon.com/images/I/51DMel2czfL._AC_UL320_.jpg',
-        categories: 'Food Best-Sellers'
+        categories: 'Food Best-Sellers New-Releases'
     },
     {
-        productName: 'M&M\'s Peanut Butter ',
+        name: 'M&M\'s Peanut Butter ',
         price: 26,
         imgSrc: 'https://m.media-amazon.com/images/I/81X5ZiXjMFL._AC_UL320_.jpg',
-        categories: 'Food Sale'
+        categories: 'Food Sale New-Releases'
     },
     {
-        productName: 'Kellogg\'s Pop Tarts',
+        name: 'Kellogg\'s Pop Tarts',
         price: 2,
         imgSrc: 'https://m.media-amazon.com/images/I/51Vjk9BImoL._AC_UL320_.jpg',
-        categories: 'Food'
+        categories: 'Food New-Releases'
     },
     {
-        productName: 'Almond Butter',
+        name: 'Almond Butter',
         price: 11,
         imgSrc: 'https://m.media-amazon.com/images/I/91dRrjcR7cL._AC_UL320_.jpg',
-        categories: 'Food'
+        categories: 'Food New-Releases'
     },
     {
-        productName: 'Crispers Barbecue',
+        name: 'Crispers Barbecue',
         price: 2,
         imgSrc: 'https://m.media-amazon.com/images/I/51JDOCH4p+L._AC_UL320_.jpg',
         categories: 'Food Best-Sellers'
     },
     {
-        productName: 'Protien Bar',
+        name: 'Protien Bar',
         price: 3,
         imgSrc: 'https://m.media-amazon.com/images/I/81hpe5KbuiL._AC_UL320_.jpg',
-        categories: 'Food Sale'
+        categories: 'Food Sale New-Releases'
     },
     {
-        productName: '7UP Cans',
+        name: '7UP Cans',
         price: 5,
         imgSrc: 'https://m.media-amazon.com/images/I/81Nt7iGIqPL._AC_UL320_.jpg',
         categories: 'Food'
     },
     {
-        productName: 'CHEERIOS Chocolate',
+        name: 'CHEERIOS Chocolate',
         price: 2,
         imgSrc: 'https://m.media-amazon.com/images/I/816s9s1J9EL._AC_UL320_.jpg',
         categories: 'Food'

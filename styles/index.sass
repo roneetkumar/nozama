@@ -15,229 +15,229 @@ $background: #fafafa
     margin: 0
     padding: 0
     font-family: Google Sans
+    font-weight: normal
 
 html
     scroll-behavior: smooth
+    will-change: scroll-position
 
 body
     background: $background
 
+
+.overlay
+    width: 100%
+    height: 100%
+    background: rgba(0,0,0,0.6)
+    position: fixed
+    display: none
+    top: 0
+    z-index: 1
+    transition: all 500ms ease-in-out
+
 .wrapper
     overflow: hidden
+    header
+        height: 500px
+        // background-position: top center
+        // background-size: cover
+        // background-repeat: no-repeat
+        // text-align: center
+        // overflow: scroll
+        // display: flex
+        &::-webkit-scrollbar
+            width: 0
+            height: 0
+            background: rgba(0,0,0,0)
+            opacity: 0
+        img
+            display: inline-block
+            height: 400px
 
-header
-    height: 500px
-    // background-position: top center
-    // background-size: cover
-    // background-repeat: no-repeat
-    // text-align: center
-    // overflow: scroll
-    // display: flex
-    &::-webkit-scrollbar
-        width: 0
-        height: 0
-        background: rgba(0,0,0,0)
-        opacity: 0
-    img
-        display: inline-block
-        height: 400px
-
-    nav#top
-        display: grid
-        grid-row-gap: 1em
-        padding: 20px 12px 0
-        box-sizing: border-box
-        width: 100%
-        .topbar
+        nav#top
             display: grid
-            grid-template-columns: max-content max-content 1fr max-content
-            align-items: center
-            grid-column-gap: 1em
-            @media(max-width:756px)
-                grid-template-columns: max-content max-content 1fr
-            @media(max-width:500px)
-                grid-template-columns: max-content 1fr max-content
-            svg.menu
-                width: 28px
-                height: 28px
-                fill: #fff
-                padding: 10px
-                border-radius: 50%
-                &:hover
-                    background: rgba(#fff,.1)
-
-            img
-                height: 46px
-                @media(max-width:500px)
-                    justify-self: center
-            .search
+            grid-row-gap: 1em
+            padding: 20px 12px 0
+            box-sizing: border-box
+            width: 100%
+            .topbar
                 display: grid
-                grid-template-columns: max-content 1fr max-content
-                width: 100%
-                max-width: 900px
-                min-width: 48px
-                height: 48px
-                background: #fff
-                border-radius: 50px
-                overflow: hidden
-                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),0 1px 5px 0 rgba(0, 0, 0, 0.12),0 3px 1px -2px rgba(0, 0, 0, 0.2)
-                z-index: 1
-                margin: auto
+                grid-template-columns: max-content max-content 1fr max-content
+                align-items: center
+                grid-column-gap: 1em
+                @media(max-width:756px)
+                    grid-template-columns: max-content max-content 1fr
                 @media(max-width:500px)
-                    justify-self: right
-                    margin: 0
-                    max-width: 48px
-                svg.close, svg.search-btn
+                    grid-template-columns: max-content 1fr max-content
+                svg.menu
                     width: 28px
                     height: 28px
-                    fill: #212121
+                    fill: #fff
                     padding: 10px
-                    margin: 0
                     border-radius: 50%
-                    box-shadow: none
-                    background: #fff
-                svg.close
-                    display: none
                     &:hover
                         background: rgba(#000,.1)
-                input
+
+                img
+                    height: 46px
+                    @media(max-width:500px)
+                        justify-self: center
+                .search
+                    display: grid
+                    grid-template-columns: max-content 1fr max-content
+                    width: 100%
+                    max-width: 900px
+                    min-width: 48px
+                    height: 48px
+                    background: #fff
+                    border-radius: 50px
+                    overflow: hidden
+                    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),0 1px 5px 0 rgba(0, 0, 0, 0.12),0 3px 1px -2px rgba(0, 0, 0, 0.2)
+                    // z-index: 1
+                    // transition: all 255ms ease-in-out
+                    margin: auto
+                    @media(max-width:500px)
+                        justify-self: right
+                        margin: 0
+                        max-width: 48px
+                    svg.close, svg.search-btn
+                        width: 28px
+                        height: 28px
+                        fill: $accent-dark
+                        padding: 10px
+                        margin: 0
+                        border-radius: 50%
+                        box-shadow: none
+                        background: #fff
+                    svg.close
+                        display: none
+                        &:hover
+                            background: rgba(#000,.1)
+                    input
+                        width: 100%
+                        display: inline-block
+                        border: 0
+                        outline: 0
+                        color: #212121
+                        box-sizing: border-box
+                        font-size: 17px
+                        padding-left: 10px
+                span
+                    color: #fff
+                    letter-spacing: 1px
+                    font-weight: bold
+                    font-size: 20px
+                    padding-right: 10px
+                    text-transform: capitalize
+                    &:hover
+                        text-decoration: underline
+                    @media(max-width:756px)
+                        display: none
+
+
+            .searchOpen
+                @media(max-width:500px)
+                    grid-template-columns: 1fr
+                svg.menu,img
+                    @media(max-width:500px)
+                        display: none
+                .search
+                    z-index: 1 !important
+                    @media(max-width:500px)
+                        max-width: 100%
+                        // border-radius: 4px
+
+            ul.link-list
+                list-style: none
+                width: 100%
+                max-width: max-content
+                display: grid
+                overflow: hidden
+                overflow-x: scroll
+                grid-template-columns: repeat(9,max-content)
+                grid-column-gap: .8em
+                margin: auto
+                padding: 10px 0
+                align-items: center
+                &::-webkit-scrollbar
+                    width: 0
+                    height: 0
+                    background: rgba(0,0,0,0)
+                    opacity: 0
+                li
+                    color: #fff
+                    height: 32px
                     display: inline-block
-                    border: 0
-                    outline: 0
-                    color: #212121
-                    box-sizing: border-box
-                    font-size: 17px
-                    padding-left: 10px
-            span
-                color: #fff
-                letter-spacing: 1px
-                font-weight: bold
-                font-size: 20px
-                padding-right: 10px
-                &:hover
-                    text-decoration: underline
-                @media(max-width:756px)
-                    display: none
+                    padding: 0 12px
+                    border-radius: 50px
+                    user-select: none
+                    font-size: 14px
+                    font-weight: bold
+                    letter-spacing: 1px
+                    line-height: 33px
+                    text-transform: uppercase
+                    background: $accent-gradient
+                    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),0 1px 5px 0 rgba(0, 0, 0, 0.12),0 3px 1px -2px rgba(0, 0, 0, 0.2)
+                .selected
+                    color: $accent-dark
+                    background: #fff
 
-
-        .searchOpen
-            @media(max-width:500px)
-                grid-template-columns: 1fr
-            svg.menu,img
-                @media(max-width:500px)
-                    display: none
-            .search
-                z-index: 1 !important
-                @media(max-width:500px)
-                    max-width: 100%
-                    border-radius: 4px
-
-        ul.link-list
-            list-style: none
-            width: 100%
-            max-width: max-content
-            display: grid
-            overflow: hidden
-            overflow-x: scroll
-            grid-template-columns: repeat(9,max-content)
-            grid-column-gap: .8em
-            margin: auto
-            padding: 10px 0
-            align-items: center
-            &::-webkit-scrollbar
-                width: 0
-                height: 0
-                background: rgba(0,0,0,0)
-                opacity: 0
-            li
-                color: #fff
-                height: 32px
-                display: inline-block
-                padding: 0 12px
-                border-radius: 50px
-                user-select: none
-                font-size: 14px
-                font-weight: bold
-                letter-spacing: 1px
-                line-height: 33px
-                text-transform: uppercase
-                background: $accent-gradient
-                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),0 1px 5px 0 rgba(0, 0, 0, 0.12),0 3px 1px -2px rgba(0, 0, 0, 0.2)
-            .selected
-                color: $accent-dark
-                background: #fff
-
-    nav.navMenu
-        width: 85%
-        max-width: 302px
-        background: #fff
-        height: 100%
-        position: fixed
-        top: 0
-        left: 0
-        box-shadow: 4px 0 12px rgba(0,0,0,0.2)
-        z-index: 1
-        transform: translateX(-312px)
-        transition: transform 255ms ease-in-out
-        will-change: transform
-
-
-
-main
-    text-align: center
-    max-width: 1400px
-    margin: auto
-    margin-top: -200px
-    min-height: 500px
-    .card
-        position: relative
-        width: 280px
-        margin: 1em
-        background: #fff
-        border-radius: 8px
-        box-shadow: 0px 2px 6px rgba(0,0,0,0.2)
-        box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14),0 1px 8px 0 rgba(0, 0, 0, 0.12),0 3px 3px -2px rgba(0, 0, 0, 0.4)
-
-        display: inline-block
-        padding: 20px 0
-        box-sizing: border-box
-        img
-            height: 150px
-        h2
-            margin: 10px
-        h1
-            width: 100%
-            font-size: 18px
-        button
-            font-size: 1em
-            width: 85%
-            height: 40px
-            margin-top: 20px
+    main
+        text-align: center
+        max-width: 1400px
+        margin: auto
+        margin-top: -200px
+        min-height: 500px
+        .card
+            position: relative
+            width: 280px
+            margin: 1em
             background: #fff
-            border-radius: 4px
-            border: 0
-            outline: 0
-            color: $accent-dark
-            font-weight: bold
-            border: 1px solid $accent-dark
-            transition: all 155ms ease-in-out
-            &:hover
-                background: $accent-gradient
-                color: #fff
+            border-radius: 8px
+            box-shadow: 0px 2px 6px rgba(0,0,0,0.2)
+            box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14),0 1px 8px 0 rgba(0, 0, 0, 0.12),0 3px 3px -2px rgba(0, 0, 0, 0.4)
+            display: inline-block
+            padding: 20px 0
+            box-sizing: border-box
+            img
+                height: 150px
+            h2
+                margin: 10px
+                color: #00E676
+                font-weight: bold
+            h1
+                width: 100%
+                font-size: 18px
+            button
+                font-size: 1em
+                width: 85%
+                height: 40px
+                margin-top: 20px
+                background: #fff
+                border-radius: 4px
+                border: 0
+                outline: 0
+                color: $accent-dark
+                font-weight: bold
+                border: 1px solid $accent-dark
+                transition: all 155ms ease-in-out
+                &:hover
+                    background: $accent-gradient
+                    color: #fff
 
-footer
-    color: #fff
-    display: flex
-    justify-content: center
-    height: 300px
-    position: relative
-    z-index: -1
-    align-items: flex-end
-    text-align: center
-    color: rgba(#000,.6)
-    padding: 10px 20px
-    margin-top: 20px
-    box-sizing: border-box
+    footer
+        color: #fff
+        display: flex
+        justify-content: center
+        height: 300px
+        position: relative
+        z-index: -1
+        align-items: flex-end
+        text-align: center
+        color: rgba(#000,.4)
+        padding: 10px 20px
+        margin-top: 20px
+        box-sizing: border-box
 
 .fab
     width: 56px
@@ -264,14 +264,80 @@ footer
     &:active
         transform: translate(-50%,-50%) scale(.9)
 
-.nav-overlay
-    width: 100%
+nav.side-nav
+    width: 85%
+    max-width: 302px
+    background: #fff
     height: 100%
-    background: rgba(0,0,0,0.6)
     position: fixed
-    display: none
     top: 0
-    transition: all 500ms ease-in-out
+    left: 0
+    box-shadow: 4px 0 12px rgba(0,0,0,0.2)
+    z-index: 1
+    transform: translateX(-312px)
+    transition: transform 255ms ease-in-out
+    will-change: transform
+    .header
+        position: relative
+        width: 100%
+        height: 172px
+        background: url(../assets/nav-header.webp)
+        background-size: 302px
+        background-color: #fff
+        box-shadow: 0 0 12px rgba(0,0,0,0.2)
+        .nav-pic
+            position: absolute
+            width: 60px
+            height: 60px
+            border-radius: 50%
+            display: inline-block
+            margin: 20px 18px
+            z-index: 1
+            background: #fff
+            box-shadow: 0 0 12px rgba(0,0,0,0.2)
+            overflow: hidden
+            // background: $theme-color
+            img.product-logo
+                @include centered
+                width: 120%
+                // height: 50px
+        .nav-heading
+            position: absolute
+            bottom: 18px
+            left: 18px
+            h1.title,h1.email
+                font-size: 13px
+                color: rgba(#000,.6)
+                font-weight: 400
+                margin: 2px 0
+            a
+                text-decoration: none
+
+                h1.email
+                    font-size: 12px
+    ul.nav-menu
+        margin: 12px 0
+        list-style: none
+        li.menu-item, li.bug-list, li.bug-list-opt, li.about, li.support, li.faq, li.submit
+            position: relative
+            width: 100%
+            height: 48px
+            transition: background 100ms ease-in-out
+            svg
+                @include centered-y
+                position: absolute
+                left: 18px
+                width: 24px
+                height: 24px
+                fill: rgba(#000,.4)
+            h1.list-item-title
+                position: relative
+                display: inline-block
+                left: 72px
+                color: rgba(#000,.5)
+                font-size: 13px
+                font-weight: 400
+                line-height: 48px
 
 .product-info
     width: 500px
@@ -283,9 +349,11 @@ footer
     position: fixed
     border-radius: 4px
     box-shadow: 0 0 50px rgba(#000,0.3)
-    transition: all 255ms ease
+    transition: all 355ms ease
     will-change: transform
     text-align: center
+    z-index: 1
+    overflow: scroll
     // opacity: 0
     img
         height: 30%
@@ -293,6 +361,8 @@ footer
     h1
         margin-top: 20px
         margin-bottom: 10px
+        color: #00E676
+        font-weight: bold
     h5
         color: rgba(#000,.8)
 
@@ -321,4 +391,90 @@ footer
 .isOpened
     transform: translate(-50%,-50%) scale(1)
     top: 50%
-    // opacity: 1
+
+
+.login
+    @include centered
+    width: 90%
+    max-width: 700px
+    height: 400px
+    background: #fff
+    position: fixed
+    border-radius: 8px
+    color: #fff
+    z-index: 1
+    display: flex
+    box-sizing: border-box
+    box-shadow: 0 0 30px rgba(#000,.2)
+    transform: translate(-50%,-50%) scale(0)
+    transition: transform 255ms ease-in-out
+    will-change: transform
+    @media (max-width: 756px)
+        width: 90%
+        height: 90%
+        max-width: 400px
+        max-height: 700px
+        display: block
+    form
+        position: relative
+        width: 50%
+        height: 100%
+        border-radius: 8px
+        box-sizing: border-box
+        padding: 30px
+        overflow-y: scroll
+        @media (max-width: 756px)
+            width: 100%
+            height: 50%
+        h2
+            color: $accent-dark
+            font-weight: bold
+            margin-bottom: 12px
+            font-size: 2em
+        label
+            color: #212121
+        input[type="text"],input[type="password"]
+            width: 100%
+            font-size: 24px
+            padding: 8px 10px
+            color: $accent-light
+            border: 2px solid $accent-dark
+            border-radius: 4px
+            margin-top: 4px
+            margin-bottom: 24px
+            box-sizing: border-box
+            outline: 0
+        button
+            width: 100%
+            font-size: 18px
+            border: 0
+            padding: 10px
+            border-radius: 4px
+            outline: 0
+
+
+    h1
+        position: absolute
+        width: 50%
+        height: 100%
+        background: $accent-gradient
+        top: 0
+        left: 50%
+        border-radius: 8px
+        display: flex
+        justify-content: center
+        align-items: center
+        letter-spacing: 2px
+        font-size: 3em
+        text-shadow: 0 2px 1px rgba(0,0,0,0.3)
+        transition: transform 200ms ease
+        @media (max-width: 756px)
+            top: 50%
+            left: 0
+            width: 100%
+            height: 50%
+
+    .login-switch
+        transform: translate(-100%,0%)
+        @media (max-width: 756px)
+            transform: translate(0,-100%)

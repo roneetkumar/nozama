@@ -1,7 +1,7 @@
 let $ = (ele) => document.querySelector(ele);
 
-let colorValues = ['#00BCD4'];
-let color = colorValues[Math.floor(Math.random() * colorValues.length)];
+let colors = ['#00BCD4', '#673AB7', '#607D8B'];
+let selectedColor = colors[Math.floor(Math.random() * colors.length)];
 
 let li = $('ul.link-list').getElementsByTagName('li');
 let cards = $('main').getElementsByClassName('card');
@@ -22,17 +22,43 @@ window.onscroll = function() {
     }
 };
 
-function overlayClose() {
-    $('.side-nav').style.transform = 'translateX(-312px)';
+const searchOpen = () => $('.topbar').classList.add('searchOpen');
+const searchClose = () => $('.topbar').classList.remove('searchOpen');
+const sideNavClose = () => $('.side-nav').style.transform = 'translateX(-312px)';
+const sideNavOpen = () => $('.side-nav').style.transform = 'translateX(0)';
+const loginHide = () => $('.login').style.transform = 'translate(-50%,-50%) scale(0)';
+const loginShow = () => $('.login').style.transform = 'translate(-50%,-50%) scale(1)';
+const productInfoHide = () => $('.product-info').classList.remove('isOpened');
+const productInfoShow = () => $('.product-info').classList.add('isOpened');
+const canScroll = () => $('body').style.overflow = 'initial';
+const canNotScroll = () => $('body').style.overflow = 'hidden';
+
+const overlayHide = () => {
     $('.overlay').style.display = 'none';
-    $('body').style.overflow = 'initial';
-    $('.product-info').classList.remove('isOpened');
+    $('.overlay').style.opacity = '0';
+}
+
+const overlayShow = () => {
+    $('.overlay').style.display = 'block';
+    $('.overlay').style.opacity = '1';
+}
+
+
+const toggleLogIn = () => {
+    $('.login h1').classList.toggle('login-switch');
+    if ($('.login h1').classList.contains('login-switch')) {
+        $('.login h1').innerHTML = 'Log In';
+    } else {
+        $('.login h1').innerHTML = 'Sign Up';
+    }
+}
+
+function searchInputCheck() {
     if ($('#myinput').value !== '') {
         $('.close').style.display = 'block';
     } else {
-        $('.topbar').classList.remove('searchOpen');
+        searchClose();
     }
-    $('.login').style.transform = 'translate(-50%,-50%) scale(0)';
 }
 
 function searchFunction() {
@@ -94,7 +120,6 @@ for (let i = 0; i < li.length; i++) {
     li[i].onclick = function() {
         let selected = $('.selected');
         category = this.innerHTML.toLowerCase();
-
         selected.classList.remove('selected');
         this.classList.add('selected');
         filter();
@@ -104,30 +129,28 @@ for (let i = 0; i < li.length; i++) {
 
 window.onload = function() {
     filter();
-    $('header').style.background = 'linear-gradient(360deg, rgba(0,0,0,0) 0%, ' + color + ' 100%)';
-    $('footer').style.background = 'linear-gradient(360deg, ' + color + ' 0%, rgba(0,0,0,0) 100%';
+    $('header').style.background = 'linear-gradient(360deg, rgba(0,0,0,0) 0%, ' + selectedColor + ' 100%)';
+    $('footer').style.background = 'linear-gradient(360deg, ' + selectedColor + ' 0%, rgba(0,0,0,0) 100%';
 }
 
 $('.menu').onclick = function() {
-    $('.side-nav').style.transform = 'translateX(0)';
-    $('.overlay').style.display = 'block';
-    $('body').style.overflow = 'hidden';
+    sideNavOpen();
+    overlayShow();
+    canNotScroll();
     $('.search').style.zIndex = '0';
 }
 
 for (let i = 0; i < buttons.length; i++) {
     buttons[i].onclick = function() {
-        $('.product-info').classList.add('isOpened');
         let selectedProduct = this.parentElement.querySelector('h1').innerHTML;
-        $('.overlay').style.display = 'block';
+        productInfoShow();
+        overlayShow();
+        canNotScroll();
         $('.search').style.zIndex = '0';
-        $('body').style.overflow = 'hidden';
 
         product.forEach(function(item) {
             if (selectedProduct === item.name) {
                 let categories = item.categories.split(' ');
-                // category += categories;
-
                 const productInfo = `
                 <svg class="closeCard" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                     <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
@@ -139,82 +162,75 @@ for (let i = 0; i < buttons.length; i++) {
                 `;
 
                 $('.product-info').innerHTML = productInfo;
-
-                $('.closeCard').onclick = function() {
-                    $('.product-info').classList.remove('isOpened');
-                    $('.overlay').style.display = 'none';
-                    $('body').style.overflow = 'initial';
-                    console.log(this);
-                }
             }
         });
     }
 }
 
 $('.close').onclick = function(event) {
-    $('.topbar').classList.remove('searchOpen');
-    $('#myinput').value = "";
-    searchFunction();
-    $('.overlay').style.display = 'none';
     this.style.display = 'none';
+    $('#myinput').value = "";
+    searchClose();
+    searchFunction();
+    overlayHide();
+    productInfoHide();
+    canScroll();
     filter();
+    searchInputCheck();
     event.stopPropagation();
 }
 
-$('.overlay').onclick = () => overlayClose();
-
+$('.overlay').onclick = function() {
+    searchInputCheck();
+    sideNavClose();
+    overlayHide();
+    productInfoHide();
+    canScroll();
+    loginHide();
+}
 $('.search').onclick = function() {
-    $('.topbar').classList.add('searchOpen');
-    $('.overlay').style.display = 'block';
-    $('body').style.overflow = 'hidden';
+    searchOpen();
+    overlayShow();
+    canNotScroll();
+    $('.search').style.zIndex = '1';
 }
 
-
-$('.login h1').onclick = function() {
-    this.classList.toggle('login-switch');
-    if (this.classList.contains('login-switch')) {
-        this.innerHTML = 'Log In';
-    } else {
-        this.innerHTML = 'Sign Up';
-    }
-}
+$('.login h1').onclick = () => toggleLogIn();
 
 $('.topbar span').onclick = function() {
-    $('.login').style.transform = 'translate(-50%,-50%) scale(1)';
-    $('.overlay').style.display = 'block';
-    $('body').style.overflow = 'hidden';
+    loginShow();
+    overlayShow();
+    canNotScroll();
 }
 
-// function populateUserData() {
-//
-// }
-
-$('.login-form button').onclick = function() {
+function login() {
     const userInput = $('.inputLogin').value.toUpperCase();
     const userPassword = $('.inputPassword').value.toUpperCase();
-    // console.log(userInput, userPassword);
+    let foundUser = false;
+
     for (let i = 0; i < user.length; i++) {
-        console.log(userInput === user[i].name.id.toUpperCase() || userInput === user[i].email.toUpperCase());
         if (userInput === user[i].name.id.toUpperCase() || userInput === user[i].email.toUpperCase()) {
+            foundUser = true;
             if (userPassword === user[i].password) {
-                overlayClose();
+                overlayHide();
+                loginHide();
                 $('.topbar span').innerHTML = user[i].name.first + ' ' + user[i].name.last;
                 $('.nav-heading h1.title').innerHTML = user[i].name.first + ' ' + user[i].name.last;
                 $('.nav-heading a h1.email').innerHTML = user[i].email;
                 $('.nav-heading a').href = 'mailto: ${user[i].email}';
-
-
-                break;
             } else {
-                console.log('password wrong');
-                $('.login-form .inputPassword').placeholder = "Incorrent Password";
                 $('.login-form .inputPassword').value = "";
+                $('.login-form .inputPassword').placeholder = "Incorrent Password";
             }
-            break;
-        } else {
-            $('.login-form .inputLogin').value = "";
-            $('.login-form .inputLogin').placeholder = "Incorrent Username";
-            $('.login-form .inputPassword').value = "";
         }
     }
+
+    if (foundUser == false) {
+        $('.login-form .inputLogin').value = "";
+        $('.login-form .inputLogin').placeholder = "Incorrent Username";
+        $('.login-form .inputPassword').value = "";
+    }
 }
+
+$('.login-form button').onclick = () => login();
+$('.nav-menu .signin').onclick = () => login();

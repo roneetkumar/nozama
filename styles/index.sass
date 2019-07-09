@@ -33,18 +33,13 @@ body
     display: none
     top: 0
     z-index: 1
-    transition: all 500ms ease-in-out
+    transition: all 355ms ease-in-out
+    opacity: 0
 
 .wrapper
     overflow: hidden
     header
         height: 500px
-        // background-position: top center
-        // background-size: cover
-        // background-repeat: no-repeat
-        // text-align: center
-        // overflow: scroll
-        // display: flex
         &::-webkit-scrollbar
             width: 0
             height: 0
@@ -93,8 +88,6 @@ body
                     border-radius: 50px
                     overflow: hidden
                     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),0 1px 5px 0 rgba(0, 0, 0, 0.12),0 3px 1px -2px rgba(0, 0, 0, 0.2)
-                    // z-index: 1
-                    // transition: all 255ms ease-in-out
                     margin: auto
                     @media(max-width:500px)
                         justify-self: right
@@ -142,10 +135,9 @@ body
                     @media(max-width:500px)
                         display: none
                 .search
-                    z-index: 1 !important
+                    z-index: 1
                     @media(max-width:500px)
                         max-width: 100%
-                        // border-radius: 4px
 
             ul.link-list
                 list-style: none
@@ -296,11 +288,10 @@ nav.side-nav
             background: #fff
             box-shadow: 0 0 12px rgba(0,0,0,0.2)
             overflow: hidden
-            // background: $theme-color
             img.product-logo
                 @include centered
                 width: 120%
-                // height: 50px
+
         .nav-heading
             position: absolute
             bottom: 18px
@@ -315,6 +306,7 @@ nav.side-nav
 
                 h1.email
                     font-size: 12px
+
     ul.nav-menu
         margin: 12px 0
         list-style: none
@@ -347,14 +339,13 @@ nav.side-nav
     top: 50%
     background: #fff
     position: fixed
-    border-radius: 4px
+    border-radius: 8px
     box-shadow: 0 0 50px rgba(#000,0.3)
     transition: all 355ms ease
     will-change: transform
     text-align: center
     z-index: 1
     overflow: scroll
-    // opacity: 0
     img
         height: 30%
         padding: 40px 0

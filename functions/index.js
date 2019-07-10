@@ -38,11 +38,11 @@ const overlayHide = () => {
     $('.overlay').style.opacity = '0';
 }
 
+
 const overlayShow = () => {
     $('.overlay').style.display = 'block';
     $('.overlay').style.opacity = '1';
 }
-
 
 const toggleLogIn = () => {
     $('.login h1').classList.toggle('login-switch');
@@ -62,18 +62,19 @@ function searchInputCheck() {
 }
 
 function searchFunction() {
-    let input, filter, a, i;
-    input = document.getElementById('myinput');
-    filter = input.value.toUpperCase();
+    input = document.getElementById('myinput').value.toUpperCase();
+    let productName = document.querySelectorAll('.card a');
 
-    for (i = 0; i < cards.length; i++) {
-        a = cards[i].getElementsByTagName("a")[0];
-        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-            cards[i].style.display = "";
+    productName.forEach(function(item) {
+
+        if (item.innerText.toUpperCase().includes(input)) {
+            // console.log(item.innerText);
+            item.parentElement.style.display = '';
+            filter();
         } else {
-            cards[i].style.display = "none";
+            item.parentElement.style.display = 'none';
         }
-    }
+    });
 }
 
 function filter() {
@@ -153,8 +154,8 @@ for (let i = 0; i < buttons.length; i++) {
                 let categories = item.categories.split(' ');
                 const productInfo = `
                 <svg class="closeCard" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-                    <path d="M0 0h24v24H0z" fill="none" /></svg>
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                <path d="M0 0h24v24H0z" fill="none" /></svg>
                 <img src='${item.imgSrc}'>
                 <h2>${item.name}</h2>
                 <h1>$${item.price} CAD</h1>
@@ -170,17 +171,17 @@ for (let i = 0; i < buttons.length; i++) {
 $('.close').onclick = function(event) {
     this.style.display = 'none';
     $('#myinput').value = "";
+    productInfoHide();
     searchClose();
     searchFunction();
     overlayHide();
-    productInfoHide();
     canScroll();
     filter();
     searchInputCheck();
     event.stopPropagation();
 }
 
-$('.overlay').onclick = function() {
+$('.overlay, .closeCard').onclick = function() {
     searchInputCheck();
     sideNavClose();
     overlayHide();
@@ -188,6 +189,9 @@ $('.overlay').onclick = function() {
     canScroll();
     loginHide();
 }
+
+
+
 $('.search').onclick = function() {
     searchOpen();
     overlayShow();
@@ -203,21 +207,53 @@ $('.topbar span').onclick = function() {
     canNotScroll();
 }
 
+$('.nav-menu .signin').onclick = function() {
+    loginShow();
+    overlayShow();
+    canNotScroll();
+    sideNavClose();
+}
+
+
+//
+// $('.closeCard').onclick = function() {
+//     productInfoHide();
+//     canScroll();
+//     overlayHide();
+//     // console.log('hi');
+// }
+
 function login() {
     const userInput = $('.inputLogin').value.toUpperCase();
     const userPassword = $('.inputPassword').value.toUpperCase();
     let foundUser = false;
+    // console.log(userInput, userPassword);
 
     for (let i = 0; i < user.length; i++) {
         if (userInput === user[i].name.id.toUpperCase() || userInput === user[i].email.toUpperCase()) {
             foundUser = true;
             if (userPassword === user[i].password) {
-                overlayHide();
-                loginHide();
                 $('.topbar span').innerHTML = user[i].name.first + ' ' + user[i].name.last;
                 $('.nav-heading h1.title').innerHTML = user[i].name.first + ' ' + user[i].name.last;
                 $('.nav-heading a h1.email').innerHTML = user[i].email;
                 $('.nav-heading a').href = 'mailto: ${user[i].email}';
+                overlayHide();
+                loginHide();
+
+                $('ul.nav-menu .signin').style.display = 'none';
+                $('ul.nav-menu .logout').style.display = 'block';
+
+                $('.login-form').style.display = 'none';
+                $('.signup-form').style.display = 'none';
+
+                $('.account-info').style.display = 'block'
+
+                $('.account-info span.name').innerText = user[i].name.first + ' ' + user[i].name.last;
+                $('.account-info span.mobile').innerText = user[i].mobile;
+                $('.account-info span.email').innerText = user[i].email;
+
+
+
             } else {
                 $('.login-form .inputPassword').value = "";
                 $('.login-form .inputPassword').placeholder = "Incorrent Password";
@@ -232,5 +268,23 @@ function login() {
     }
 }
 
+function logout() {
+    sideNavClose();
+    overlayHide();
+    loginHide();
+    $('ul.nav-menu .signin').style.display = 'block';
+    $('ul.nav-menu .logout').style.display = 'none';
+
+    $('.topbar span').innerHTML = 'Sign Up | Log In';
+    $('.nav-heading h1.title').innerHTML = '';
+    $('.nav-heading a h1.email').innerHTML = '';
+    $('.nav-heading a').href = '';
+
+    $('.login-form').style.display = 'block';
+    $('.signup-form').style.display = 'block';
+    $('.account-info').style.display = 'none'
+}
+
 $('.login-form button').onclick = () => login();
-$('.nav-menu .signin').onclick = () => login();
+
+$('.logoutBtn').onclick = () => logout();

@@ -16,6 +16,7 @@ $background: #fafafa
     padding: 0
     font-family: Google Sans
     font-weight: normal
+    // user-select: none
 
 html
     scroll-behavior: smooth
@@ -33,7 +34,7 @@ body
     display: none
     top: 0
     z-index: 1
-    transition: all 355ms ease-in-out
+    transition: all 255ms ease-in-out
     opacity: 0
 
 .wrapper
@@ -301,6 +302,8 @@ nav.side-nav
                 color: rgba(#000,.6)
                 font-weight: 400
                 margin: 2px 0
+            h1.title
+                text-transform: capitalize
             a
                 text-decoration: none
 
@@ -310,11 +313,13 @@ nav.side-nav
     ul.nav-menu
         margin: 12px 0
         list-style: none
-        li.menu-item, li.bug-list, li.bug-list-opt, li.about, li.support, li.faq, li.submit
+        li.menu-item
             position: relative
             width: 100%
             height: 48px
             transition: background 100ms ease-in-out
+            &:hover
+                background: rgba(#000,.1)
             svg
                 @include centered-y
                 position: absolute
@@ -331,6 +336,12 @@ nav.side-nav
                 font-weight: 400
                 line-height: 48px
 
+        li.signin
+            display: none
+            @media(max-width:756px)
+                display: block
+
+
 .product-info
     width: 500px
     height: 500px
@@ -341,7 +352,7 @@ nav.side-nav
     position: fixed
     border-radius: 8px
     box-shadow: 0 0 50px rgba(#000,0.3)
-    transition: all 355ms ease
+    transition: all 255ms ease
     will-change: transform
     text-align: center
     z-index: 1
@@ -367,11 +378,12 @@ nav.side-nav
         border-radius: 50%
         box-shadow: none
         background: #fff
+        fill: $accent-light
         right: 10px
         top: 10px
-        background: rgba(#000,.1)
+        background: rgba(#000,.05)
         &:hover
-            background: rgba(#000,.2)
+            background: rgba(#000,.1)
     @media(max-width: 756px)
         width: 100%
         height: 100%
@@ -406,7 +418,7 @@ nav.side-nav
         max-width: 400px
         max-height: 700px
         display: block
-    form
+    .login-form,.signup-form,.account-info
         position: relative
         width: 50%
         height: 100%
@@ -422,8 +434,14 @@ nav.side-nav
             font-weight: bold
             margin-bottom: 12px
             font-size: 2em
+            text-align: center
         label
             color: #212121
+        span
+            color: $accent-light
+            font-size: 1.3em
+        span.name
+            text-transform: capitalize
         input[type="text"],input[type="password"]
             width: 100%
             font-size: 24px

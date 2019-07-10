@@ -4,6 +4,7 @@ let user = [{
         last: 'kumar',
         id: 'roneet'
     },
+    mobile: '438-979-3111',
     password: '1111',
     email: 'roneetparida@gmail.com',
 },{
@@ -38,6 +39,14 @@ let user = [{
     },
     password: '5555',
     email: 'davinder@gmail.com',
+},{
+    name: {
+        first: 'shivam',
+        last: 'patel',
+        id: 'shivam'
+    },
+    password: '6666',
+    email: 'shivam@gmail.com',
 }];
 
 let product = [{

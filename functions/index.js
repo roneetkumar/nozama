@@ -45,11 +45,14 @@ const overlayShow = () => {
 }
 
 const toggleLogIn = () => {
-    $('.login h1').classList.toggle('login-switch');
-    if ($('.login h1').classList.contains('login-switch')) {
-        $('.login h1').innerHTML = 'Log In';
+    $('.login h1.LoggedOut').classList.toggle('login-switch');
+    $('.login h1.LoggedIn').classList.toggle('login-switch');
+    if ($('.login h1.LoggedOut').classList.contains('login-switch') || $('.login h1.LoggedOut').classList.contains('login-switch')) {
+        $('.login h1.LoggedOut').innerHTML = 'Log In';
+        $('.login h1.LoggedIn').innerHTML = 'User Info';
     } else {
-        $('.login h1').innerHTML = 'Sign Up';
+        $('.login h1.LoggedOut').innerHTML = 'Sign Up';
+        $('.login h1.LoggedIn').innerHTML = 'Account Info';
     }
 }
 
@@ -61,31 +64,52 @@ function searchInputCheck() {
     }
 }
 
+
 function searchFunction() {
     input = document.getElementById('myinput').value.toUpperCase();
     let productName = document.querySelectorAll('.card a');
 
     productName.forEach(function(item) {
-
         if (item.innerText.toUpperCase().includes(input)) {
-            // console.log(item.innerText);
             item.parentElement.style.display = '';
-            filter();
         } else {
             item.parentElement.style.display = 'none';
         }
     });
+    filter();
 }
 
 function filter() {
     for (let i = 0; i < cards.length; i++) {
-        if (!cards[i].classList.contains(category)) {
-            cards[i].style.display = 'none';
-        } else {
+        if (cards[i].classList.contains(category)) {
             cards[i].style.display = '';
+        } else {
+            cards[i].style.display = 'none';
         }
     }
 }
+
+function logout() {
+    sideNavClose();
+    overlayHide();
+    loginHide();
+    $('.nav-heading h1.title').innerHTML = '';
+    $('.nav-heading a h1.email').innerHTML = '';
+    $('.nav-heading a').href = '';
+    $('.topbar span').innerHTML = 'Sign Up | Log In';
+    $('ul.nav-menu .signin').style.display = 'block';
+    $('ul.nav-menu .logout').style.display = 'none';
+    $('ul.nav-menu .signin h1').innerText = 'Sign In | Sign Up';
+    setTimeout(function() {
+        $('.login-form').style.display = 'block';
+        $('.signup-form').style.display = 'block';
+        $('.account-info').style.display = 'none'
+
+    }, 500);
+    $('.login h1.LoggedIn').style.display = 'flex';
+    $('.login h1.LoggedOut').style.display = 'block';
+}
+
 
 function sortList(sortBy) {
     product = product.slice(0);
@@ -181,7 +205,7 @@ $('.close').onclick = function(event) {
     event.stopPropagation();
 }
 
-$('.overlay, .closeCard').onclick = function() {
+$('.overlay').onclick = function() {
     searchInputCheck();
     sideNavClose();
     overlayHide();
@@ -190,8 +214,6 @@ $('.overlay, .closeCard').onclick = function() {
     loginHide();
 }
 
-
-
 $('.search').onclick = function() {
     searchOpen();
     overlayShow();
@@ -199,7 +221,14 @@ $('.search').onclick = function() {
     $('.search').style.zIndex = '1';
 }
 
-$('.login h1').onclick = () => toggleLogIn();
+$('.login h1.LoggedOut').onclick = () => toggleLogIn();
+$('.login h1.LoggedIn').onclick = () => toggleLogIn();
+
+$('#myinput').onkeyup = () => searchFunction();
+
+$('.login-form button').onclick = () => login();
+$('.logout').onclick = () => logout();
+$('.logoutBtn').onclick = () => logout();
 
 $('.topbar span').onclick = function() {
     loginShow();
@@ -240,17 +269,24 @@ function login() {
                 overlayHide();
                 loginHide();
 
-                $('ul.nav-menu .signin').style.display = 'none';
+                // $('ul.nav-menu .signin').style.display = 'none';
+                $('ul.nav-menu .signin h1').innerText = 'Account';
                 $('ul.nav-menu .logout').style.display = 'block';
 
-                $('.login-form').style.display = 'none';
-                $('.signup-form').style.display = 'none';
+                setTimeout(function() {
+                    $('.login-form').style.display = 'none';
+                    $('.signup-form').style.display = 'none';
 
-                $('.account-info').style.display = 'block'
+                    $('.account-info').style.display = 'block'
+
+                }, 500);
 
                 $('.account-info span.name').innerText = user[i].name.first + ' ' + user[i].name.last;
                 $('.account-info span.mobile').innerText = user[i].mobile;
                 $('.account-info span.email').innerText = user[i].email;
+
+                $('.login h1.LoggedIn').style.display = 'flex';
+                $('.login h1.LoggedOut').style.display = 'none';
 
 
 
@@ -267,24 +303,3 @@ function login() {
         $('.login-form .inputPassword').value = "";
     }
 }
-
-function logout() {
-    sideNavClose();
-    overlayHide();
-    loginHide();
-    $('ul.nav-menu .signin').style.display = 'block';
-    $('ul.nav-menu .logout').style.display = 'none';
-
-    $('.topbar span').innerHTML = 'Sign Up | Log In';
-    $('.nav-heading h1.title').innerHTML = '';
-    $('.nav-heading a h1.email').innerHTML = '';
-    $('.nav-heading a').href = '';
-
-    $('.login-form').style.display = 'block';
-    $('.signup-form').style.display = 'block';
-    $('.account-info').style.display = 'none'
-}
-
-$('.login-form button').onclick = () => login();
-
-$('.logoutBtn').onclick = () => logout();

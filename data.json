@@ -13,6 +13,7 @@ let user = [{
         last: 'Virdi',
         id: 'roop'
     },
+    mobile: '438-979-3111',
     password: '2222',
     email: 'virdirocking.96@gmail.com',
 },{
@@ -21,6 +22,7 @@ let user = [{
         last: 'rao',
         id: 'vinay'
     },
+    mobile: '438-979-3111',
     password: '3333',
     email: 'vinay@gmail.com',
 },{
@@ -29,6 +31,7 @@ let user = [{
         last: 'shaikh',
         id: 'resh'
     },
+    mobile: '438-979-3111',
     password: '4444',
     email: 'reshma@gmail.com',
 },{
@@ -37,6 +40,7 @@ let user = [{
         last: 'sharma',
         id: 'davinder'
     },
+    mobile: '438-979-3111',
     password: '5555',
     email: 'davinder@gmail.com',
 },{
@@ -45,6 +49,7 @@ let user = [{
         last: 'patel',
         id: 'shivam'
     },
+    mobile: '438-979-3111',
     password: '6666',
     email: 'shivam@gmail.com',
 }];

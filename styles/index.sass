@@ -10,8 +10,8 @@ $background: #fafafa
         box-shadow: 0 0 0 0px rgba($accent-dark,1)
     100%
         box-shadow: 0 0 0 30px rgba($accent-dark,0)
-
 *
+
     margin: 0
     padding: 0
     font-family: Google Sans
@@ -232,6 +232,7 @@ body
         margin-top: 20px
         box-sizing: border-box
 
+// -----------------------fab
 .fab
     width: 56px
     height: 56px
@@ -341,7 +342,7 @@ nav.side-nav
             @media(max-width:756px)
                 display: block
 
-
+// --------------product-info
 .product-info
     width: 500px
     height: 500px
@@ -395,7 +396,7 @@ nav.side-nav
     transform: translate(-50%,-50%) scale(1)
     top: 50%
 
-
+// -------------------login
 .login
     @include centered
     width: 90%
@@ -487,3 +488,41 @@ nav.side-nav
         transform: translate(-100%,0%)
         @media (max-width: 756px)
             transform: translate(0,-100%)
+
+// --------------cart
+
+.cart
+    position: absolute
+    width: 80px
+    height: 80px
+    top: 160px
+    left: 50%
+    transform: translate(-50%,0%)
+    background:#fff
+    border-radius: 50%
+    margin: 20px 0
+    display: inline-block
+    transition: all 205ms ease-in-out
+    box-shadow:  0 0 60px rgba(#000,.2)   
+    will-change: transform
+    // z-index: 1
+    svg
+        @include centered
+        fill: $accent-light 
+        width: 32px
+        height: 32px    
+
+.openCart
+    position: fixed
+    width: 700px
+    height: 700px
+    border-radius: 8px
+    left: 50%
+    top: 50%
+    transform: translate(-50%,-50%)   
+    overflow: hidden 
+    @media (max-width: 500px)
+        width: 100%
+        height: 100%
+        margin: 0
+        border-radius: 0

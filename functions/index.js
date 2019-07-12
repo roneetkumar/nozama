@@ -1,4 +1,5 @@
 let $ = (ele) => document.querySelector(ele);
+let $$ = (ele) => document.querySelectorAll(ele);
 
 let colors = ['#00BCD4', '#673AB7', '#607D8B'];
 let selectedColor = colors[Math.floor(Math.random() * colors.length)];
@@ -8,7 +9,7 @@ let cards = $('main').getElementsByClassName('card');
 let category = $('.selected').innerHTML.toLowerCase();
 let buttons = $('main').getElementsByTagName('button');
 
-window.onscroll = function() {
+window.onscroll = function () {
     let fab = $('.fab svg');
     let hook = $('#hook');
     let flag = $('body').scrollHeight / 3;
@@ -36,12 +37,20 @@ const canNotScroll = () => $('body').style.overflow = 'hidden';
 const overlayHide = () => {
     $('.overlay').style.display = 'none';
     $('.overlay').style.opacity = '0';
+    searchInputCheck();
+    sideNavClose();
+    productInfoHide();
+    canScroll();
+    loginHide();
+    closeCart();
+    $('.search').style.zIndex = '0';
 }
 
 
 const overlayShow = () => {
     $('.overlay').style.display = 'block';
     $('.overlay').style.opacity = '1';
+    canNotScroll();
 }
 
 const toggleLogIn = () => {
@@ -66,17 +75,19 @@ function searchInputCheck() {
 
 
 function searchFunction() {
-    input = document.getElementById('myinput').value.toUpperCase();
+    let input = document.getElementById('myinput').value.toUpperCase();
     let productName = document.querySelectorAll('.card a');
 
-    productName.forEach(function(item) {
+    productName.forEach(function (item) {
         if (item.innerText.toUpperCase().includes(input)) {
+            console.log('hi');
             item.parentElement.style.display = '';
+
         } else {
             item.parentElement.style.display = 'none';
         }
     });
-    filter();
+    // filter();
 }
 
 function filter() {
@@ -100,7 +111,7 @@ function logout() {
     $('ul.nav-menu .signin').style.display = 'block';
     $('ul.nav-menu .logout').style.display = 'none';
     $('ul.nav-menu .signin h1').innerText = 'Sign In | Sign Up';
-    setTimeout(function() {
+    setTimeout(function () {
         $('.login-form').style.display = 'block';
         $('.signup-form').style.display = 'block';
         $('.account-info').style.display = 'none'
@@ -113,7 +124,7 @@ function logout() {
 
 function sortList(sortBy) {
     product = product.slice(0);
-    product.sort(function(a, b) {
+    product.sort(function (a, b) {
         let x, y;
         if (sortBy === 'A') {
             x = a.name.toLowerCase();
@@ -126,9 +137,32 @@ function sortList(sortBy) {
     });
 }
 
+function openCart() {
+    console.log('CartOpened');
+    $('.cart').classList.add('openCart');
+    $('.cart svg').style.display = 'none';
+    $('.cart').style.zIndex = '1';
+    // console.log($('.cart svg'));
+
+}
+
+function closeCart() {
+    console.log('Cart-closed');
+    $('.cart').classList.remove('openCart');
+    $('.cart svg').style.display = '';
+    $('.cart').style.zIndex = '0';
+}
+
+$('.cart').onclick = function () {
+    openCart();
+    overlayShow();
+
+}
+
+
 sortList('A');
 
-product.forEach(function(item) {
+product.forEach(function (item) {
     let category = item.categories.toLowerCase();
     const card = `
     <div class="card ${category}">
@@ -142,7 +176,7 @@ product.forEach(function(item) {
 });
 
 for (let i = 0; i < li.length; i++) {
-    li[i].onclick = function() {
+    li[i].onclick = function () {
         let selected = $('.selected');
         category = this.innerHTML.toLowerCase();
         selected.classList.remove('selected');
@@ -151,14 +185,13 @@ for (let i = 0; i < li.length; i++) {
     }
 }
 
-
-window.onload = function() {
+window.onload = function () {
     filter();
     $('header').style.background = 'linear-gradient(360deg, rgba(0,0,0,0) 0%, ' + selectedColor + ' 100%)';
     $('footer').style.background = 'linear-gradient(360deg, ' + selectedColor + ' 0%, rgba(0,0,0,0) 100%';
 }
 
-$('.menu').onclick = function() {
+$('.menu').onclick = function () {
     sideNavOpen();
     overlayShow();
     canNotScroll();
@@ -166,14 +199,14 @@ $('.menu').onclick = function() {
 }
 
 for (let i = 0; i < buttons.length; i++) {
-    buttons[i].onclick = function() {
+    buttons[i].onclick = function () {
         let selectedProduct = this.parentElement.querySelector('h1').innerHTML;
         productInfoShow();
         overlayShow();
         canNotScroll();
         $('.search').style.zIndex = '0';
 
-        product.forEach(function(item) {
+        product.forEach(function (item) {
             if (selectedProduct === item.name) {
                 let categories = item.categories.split(' ');
                 const productInfo = `
@@ -192,29 +225,22 @@ for (let i = 0; i < buttons.length; i++) {
     }
 }
 
-$('.close').onclick = function(event) {
+$('.close').onclick = function (event) {
     this.style.display = 'none';
     $('#myinput').value = "";
-    productInfoHide();
     searchClose();
     searchFunction();
     overlayHide();
-    canScroll();
     filter();
-    searchInputCheck();
+
     event.stopPropagation();
 }
 
-$('.overlay').onclick = function() {
-    searchInputCheck();
-    sideNavClose();
+$('.overlay').onclick = function () {
     overlayHide();
-    productInfoHide();
-    canScroll();
-    loginHide();
 }
 
-$('.search').onclick = function() {
+$('.search').onclick = function () {
     searchOpen();
     overlayShow();
     canNotScroll();
@@ -230,13 +256,13 @@ $('.login-form button').onclick = () => login();
 $('.logout').onclick = () => logout();
 $('.logoutBtn').onclick = () => logout();
 
-$('.topbar span').onclick = function() {
+$('.topbar span').onclick = function () {
     loginShow();
     overlayShow();
     canNotScroll();
 }
 
-$('.nav-menu .signin').onclick = function() {
+$('.nav-menu .signin').onclick = function () {
     loginShow();
     overlayShow();
     canNotScroll();
@@ -273,7 +299,7 @@ function login() {
                 $('ul.nav-menu .signin h1').innerText = 'Account';
                 $('ul.nav-menu .logout').style.display = 'block';
 
-                setTimeout(function() {
+                setTimeout(function () {
                     $('.login-form').style.display = 'none';
                     $('.signup-form').style.display = 'none';
 

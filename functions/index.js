@@ -26,9 +26,15 @@ window.onscroll = function () {
 const searchOpen = () => $('.topbar').classList.add('searchOpen');
 const searchClose = () => $('.topbar').classList.remove('searchOpen');
 const sideNavClose = () => $('.side-nav').style.transform = 'translateX(-312px)';
-const sideNavOpen = () => $('.side-nav').style.transform = 'translateX(0)';
+const sideNavOpen = () => {
+    $('.side-nav').style.transform = 'translateX(0)';
+    $('.search').style.zIndex = '0';
+}
 const loginHide = () => $('.login').style.transform = 'translate(-50%,-50%) scale(0)';
-const loginShow = () => $('.login').style.transform = 'translate(-50%,-50%) scale(1)';
+const loginShow = () => {
+    $('.search').style.zIndex = '0';
+    $('.login').style.transform = 'translate(-50%,-50%) scale(1)';
+}
 const productInfoHide = () => $('.product-info').classList.remove('isOpened');
 const productInfoShow = () => $('.product-info').classList.add('isOpened');
 const canScroll = () => $('body').style.overflow = 'initial';
@@ -37,19 +43,20 @@ const canNotScroll = () => $('body').style.overflow = 'hidden';
 const overlayHide = () => {
     $('.overlay').style.display = 'none';
     $('.overlay').style.opacity = '0';
+    $('.search').style.zIndex = '1'
     searchInputCheck();
     sideNavClose();
     productInfoHide();
     canScroll();
     loginHide();
     closeCart();
-    $('.search').style.zIndex = '0';
+    $('.cart').style.zIndex = '0'
 }
 
 
 const overlayShow = () => {
-    $('.overlay').style.display = 'block';
     $('.overlay').style.opacity = '1';
+    $('.overlay').style.display = 'block';
     canNotScroll();
 }
 
@@ -138,25 +145,22 @@ function sortList(sortBy) {
 }
 
 function openCart() {
-    console.log('CartOpened');
+    $('.cart').style.zIndex = '1'
+    // console.log('CartOpened');
     $('.cart').classList.add('openCart');
     $('.cart svg').style.display = 'none';
-    $('.cart').style.zIndex = '1';
-    // console.log($('.cart svg'));
-
+    $('.search').style.zIndex = '0';
 }
 
 function closeCart() {
     console.log('Cart-closed');
     $('.cart').classList.remove('openCart');
     $('.cart svg').style.display = '';
-    $('.cart').style.zIndex = '0';
 }
 
 $('.cart').onclick = function () {
     openCart();
     overlayShow();
-
 }
 
 
@@ -195,17 +199,15 @@ $('.menu').onclick = function () {
     sideNavOpen();
     overlayShow();
     canNotScroll();
-    $('.search').style.zIndex = '0';
 }
 
 for (let i = 0; i < buttons.length; i++) {
     buttons[i].onclick = function () {
+        $('.search').style.zIndex = '0';
         let selectedProduct = this.parentElement.querySelector('h1').innerHTML;
         productInfoShow();
         overlayShow();
         canNotScroll();
-        $('.search').style.zIndex = '0';
-
         product.forEach(function (item) {
             if (selectedProduct === item.name) {
                 let categories = item.categories.split(' ');
@@ -232,7 +234,6 @@ $('.close').onclick = function (event) {
     searchFunction();
     overlayHide();
     filter();
-
     event.stopPropagation();
 }
 
@@ -244,7 +245,6 @@ $('.search').onclick = function () {
     searchOpen();
     overlayShow();
     canNotScroll();
-    $('.search').style.zIndex = '1';
 }
 
 $('.login h1.LoggedOut').onclick = () => toggleLogIn();

@@ -1,6 +1,7 @@
 let $ = (ele) => document.querySelector(ele);
 let $$ = (ele) => document.querySelectorAll(ele);
 
+
 let colors = ['#00BCD4', '#673AB7', '#607D8B'];
 let selectedColor = colors[Math.floor(Math.random() * colors.length)];
 
@@ -23,8 +24,14 @@ window.onscroll = function () {
     }
 };
 
-const searchOpen = () => $('.topbar').classList.add('searchOpen');
-const searchClose = () => $('.topbar').classList.remove('searchOpen');
+const searchOpen = () => {
+    $('.topbar').classList.add('searchOpen');
+}
+const searchClose = () => {
+    // setTimeout(function () {
+    $('.topbar').classList.remove('searchOpen');
+    // }, 1355);
+}
 const sideNavClose = () => $('.side-nav').style.transform = 'translateX(-312px)';
 const sideNavOpen = () => {
     $('.side-nav').style.transform = 'translateX(0)';
@@ -42,21 +49,21 @@ const canNotScroll = () => $('body').style.overflow = 'hidden';
 
 const overlayHide = () => {
     $('.overlay').style.display = 'none';
+    $('.search').style.zIndex = '1';
+    $('.cart').style.zIndex = '0';
     $('.overlay').style.opacity = '0';
-    $('.search').style.zIndex = '1'
     searchInputCheck();
     sideNavClose();
     productInfoHide();
     canScroll();
     loginHide();
     closeCart();
-    $('.cart').style.zIndex = '0'
 }
 
 
 const overlayShow = () => {
-    $('.overlay').style.opacity = '1';
     $('.overlay').style.display = 'block';
+    $('.overlay').style.opacity = '1';
     canNotScroll();
 }
 
@@ -146,21 +153,22 @@ function sortList(sortBy) {
 
 function openCart() {
     $('.cart').style.zIndex = '1'
-    // console.log('CartOpened');
     $('.cart').classList.add('openCart');
-    $('.cart svg').style.display = 'none';
+    $('.cart .svg-group').style.display = 'none';
     $('.search').style.zIndex = '0';
 }
 
 function closeCart() {
-    console.log('Cart-closed');
+    // console.log('Cart-closed');
     $('.cart').classList.remove('openCart');
-    $('.cart svg').style.display = '';
+    setTimeout(function () {
+        $('.cart .svg-group').style.display = '';
+    }, 300);
 }
 
 $('.cart').onclick = function () {
-    openCart();
     overlayShow();
+    openCart();
 }
 
 
@@ -212,7 +220,7 @@ for (let i = 0; i < buttons.length; i++) {
             if (selectedProduct === item.name) {
                 let categories = item.categories.split(' ');
                 const productInfo = `
-                <svg class="closeCard" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <svg  onclick='productInfoClose()' class="closeCard" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
                 <path d="M0 0h24v24H0z" fill="none" /></svg>
                 <img src='${item.imgSrc}'>
@@ -270,19 +278,17 @@ $('.nav-menu .signin').onclick = function () {
 }
 
 
-//
-// $('.closeCard').onclick = function() {
-//     productInfoHide();
-//     canScroll();
-//     overlayHide();
-//     // console.log('hi');
-// }
+function productInfoClose() {
+    console.log('hi');
+    productInfoHide();
+    canScroll();
+    overlayHide();
+}
 
 function login() {
     const userInput = $('.inputLogin').value.toUpperCase();
     const userPassword = $('.inputPassword').value.toUpperCase();
     let foundUser = false;
-    // console.log(userInput, userPassword);
 
     for (let i = 0; i < user.length; i++) {
         if (userInput === user[i].name.id.toUpperCase() || userInput === user[i].email.toUpperCase()) {

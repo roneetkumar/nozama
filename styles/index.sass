@@ -26,6 +26,7 @@ body
     background: $background
 
 
+
 .overlay
     width: 100%
     height: 100%
@@ -33,9 +34,9 @@ body
     position: fixed
     display: none
     top: 0
-    opacity: 1
+    opacity: 0
     z-index: 1
-    transition: all 255ms ease-in-out
+    transition: opacity 355ms ease-in-out
 
 .wrapper
     overflow: hidden
@@ -130,17 +131,16 @@ body
                         display: none
 
 
-                .searchOpen
-                    
+            .searchOpen
+                @media(max-width:500px)
+                    grid-template-columns: 1fr
+                svg.menu,img
                     @media(max-width:500px)
-                        grid-template-columns: 1fr
-                    svg.menu,img
-                        @media(max-width:500px)
-                            display: none
-                    .search
-                        
-                        @media(max-width:500px)
-                            max-width: 100%
+                        display: none
+                .search
+                    transition: max-width 355ms ease-in-out
+                    @media(max-width:500px)
+                        max-width: 100%         
 
             ul.link-list
                 list-style: none
@@ -183,7 +183,6 @@ body
         margin: auto
         margin-top: -200px
         min-height: 500px
-        // z-index: -1
         .card
             position: relative
             width: 280px
@@ -356,7 +355,7 @@ nav.side-nav
     position: fixed
     border-radius: 8px
     box-shadow: 0 0 50px rgba(#000,0.3)
-    transition: all 255ms ease
+    transition: all 355ms ease-in-out
     will-change: transform
     text-align: center
     z-index: 1
@@ -372,7 +371,7 @@ nav.side-nav
     h5
         color: rgba(#000,.8)
 
-    .closeCard
+    svg.closeCard
         position: absolute
         display: none
         width: 28px
@@ -382,7 +381,7 @@ nav.side-nav
         border-radius: 50%
         box-shadow: none
         background: #fff
-        fill: $accent-light
+        fill: $accent-dark
         right: 10px
         top: 10px
         background: rgba(#000,.05)
@@ -392,12 +391,12 @@ nav.side-nav
         width: 100%
         height: 100%
         border-radius: 0
-        .closeCard
+        svg.closeCard
             display: initial
 
 .isOpened
     transform: translate(-50%,-50%) scale(1)
-    top: 50%
+    // top: 50%
 
 // -------------------login
 .login
@@ -496,7 +495,8 @@ nav.side-nav
 
 .cart
     position: absolute
-    width: 80px
+    width: 100%
+    max-width: 80px
     height: 80px
     top: 160px
     left: 50%
@@ -505,19 +505,32 @@ nav.side-nav
     border-radius: 50%
     margin: 20px 0
     display: inline-block
-    transition: all 205ms ease-in-out
+    transition: all 355ms ease-in-out
     box-shadow:  0 0 60px rgba(#000,.2)   
     will-change: transform
-    // z-index: 0
-    svg
+    overflow: hidden
+    &:hover
+        .svg-group
+            // transition: transform 255ms ease-in-out
+            transition: transform 155ms ease-in-out     
+            transform: translate(-15%,-50%)
+    .svg-group
         @include centered
-        fill: $accent-light 
-        width: 32px
-        height: 32px    
+        transform: translate(-83%,-50%)
+        width: 100px;
+        display: flex;
+        justify-content: space-between;
+        will-change: transform
+        svg
+            // @include centered
+            fill: $accent-light 
+            width: 32px
+            height: 32px    
 
 .openCart
     position: fixed
-    width: 700px
+    // width: 100%
+    max-width: 700px
     height: 700px
     border-radius: 8px
     left: 50%

@@ -95,6 +95,7 @@ const overlayHide = () => {
     $('.search').style.zIndex = '1';
     $('.cart').style.zIndex = '0';
     $('.overlay').style.opacity = '0';
+    canScroll();
 }
 
 
@@ -185,13 +186,11 @@ function openCart() {
     setTimeout(function () {
         $('.cart h1').style.display = 'block';
     }, 300);
-
-
-
-
 }
 
 function closeCart() {
+    console.log('hi');
+
     $('.cart').classList.remove('openCart');
     $('.cart h1').style.display = '';
     setTimeout(function () {
@@ -212,15 +211,14 @@ $('.cart').onclick = () => {
     canNotScroll();
 }
 
-$('.cart').onclick = () => {
+$('.menu-cart').onclick = () => {
     openCart();
     overlayShow();
     canNotScroll();
+    sideNavClose();
 }
 
-
-
-$('.closeCart').onclick = function (event) {
+$('.closeCart').onclick = (event) => {
     closeCart();
     overlayHide();
     canScroll();
@@ -389,9 +387,10 @@ function login() {
 let counter = 0;
 buttons.forEach(button => {
     button.onclick = (event) => {
+        let i = 1;
         const cartItem = `
         <div class="item">
-            <h1> ${button.parentElement.querySelector('h1').innerText} </h1>
+            <h1> ${++i} ${button.parentElement.querySelector('h1').innerText} </h1>
             <hr>
             <svg class="removeCartItem" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path

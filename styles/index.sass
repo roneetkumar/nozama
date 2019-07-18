@@ -567,10 +567,10 @@ nav.side-nav
             border-radius: 50%
             width: 32px
             height: 32px
-            transform: translateY(-50%)
+            // transform: translateY(-50%)
             position: absolute
-            top: 50%
-            right: 10px
+            top: 8px
+            right: 0
             &:hover
                 background: rgba(#000,.04) 
 
@@ -586,17 +586,19 @@ nav.side-nav
         width: 32px
         height: 32px    
     .next-page
-        width: 70px
-        height: 70px
+        width: 38px
+        height: 38px
         box-shadow: 0 0 4px rgba(0,0,0,.3) 
         background: #00E676    
         position: fixed
         bottom: 30px
         left: 50%
-        transform: translateX(-50%) scale(0)  
+        transform: translateX(-50%) scale(0) rotate(0)  
         transition: all .1s ease-in-out
         transition-delay: 0ms
         z-index: 1
+        padding: 14px
+        fill: #fff
         border-radius: 50%    
 
 
@@ -623,23 +625,23 @@ nav.side-nav
         border-radius: 50%
         box-shadow: none
         background: #fff
-        fill: $accent-dark
+        fill: $accent-light
         right: 10px
         top: 10px
-        background: rgba(#000,.05)
+        background: rgba(#000,.03)
         &:hover
             background: rgba(#000,.1)
     .next-page
         transition: all .2s ease-in-out
-        transform: translateX(-50%) scale(1)
-        box-shadow: 0 10px 14px rgba(0,0,0,0.4)
+        transform: translateX(-50%) scale(1) rotate(360deg)  
+        box-shadow: 0 6px 6px rgba(0,0,0,0.4)
         transition-delay: 500ms
 
     @media (max-width: 756px)
-        max-width: 100%
-        height: 100%
+        max-width: 90%
+        height: 90%
         margin: 0
-        border-radius: 0
+        // border-radius: 0
         svg.closeCart
             display: initial     
              

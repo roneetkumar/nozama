@@ -514,10 +514,8 @@ nav.side-nav
     box-shadow:  0 0 60px rgba(#000,.2)   
     will-change: transform
     overflow: visible
-    // display: none
-    .cartHeading
-        color: $accent-dark
-    span
+    
+    .item-counter
         color: white
         background: #ff1100
         text-align: center
@@ -529,7 +527,7 @@ nav.side-nav
         top: 0
         right: 0
         transform: rotate(0)
-        transition: transform .2s ease-in-out  
+        // transition: transform .2s ease-in-out         
         // display: none
     svg.closeCart
         display: none
@@ -537,44 +535,45 @@ nav.side-nav
         text-align: center
         display: none
         margin: 14px
-    .item
+        color: $accent-dark
+    form.checkoutForm
+        display: none       
+    .cart-items
         position: relative
-        display: none
-        width: 90%
-        padding: 12px
-        background: white
-        margin: 20px auto
-        border-radius: 8px
-        border: .5px solid rgba(#000,0.1);
-        // box-shadow: 0 0 4px rgba(0,0,0,0.2)
-        font-size: 10px
-        transition: transform .4s ease-in-out
-        hr
-            border: 0.5px solid
-            opacity: 0.05
+        transition: transform .3s ease-in-out     
+        .item
+            position: relative
+            display: none
             width: 90%
-            display: inline-block
-        h1
-            color: $accent-dark   
-            margin: 10px 20px;
-        .item-price
-            color: #00E676  
-        .removeCartItem
-            padding: 10px;
-            will-change: transform
-            fill: $accent-light
-            
-            border-radius: 50%
-            width: 32px
-            height: 32px
-            // transform: translateY(-50%)
-            position: absolute
-            top: 8px
-            right: 0
-            &:hover
-                background: rgba(#000,.04) 
+            background: white
+            margin: 20px auto
+            border-radius: 8px
+            border: .5px solid rgba(#000,0.1);
+            font-size: 10px
+            transition: transform .4s ease-in-out
+            hr
+                border: 0.5px solid
+                opacity: 0.05
+                width: 95%
+                margin: auto
+            h1
+                color: $accent-dark   
+                margin: 10px 20px;
+            .item-price
+                color: #00E676  
+            .removeCartItem
+                padding: 10px;
+                will-change: transform
+                fill: $accent-light
+                border-radius: 50%
+                width: 24px
+                height: 24px
+                position: absolute
+                top: 2px
+                right: 2px
+                &:hover
+                    background: rgba(#000,.04) 
 
-    
     .cart-icon
         @include centered
         transform: translate(-50%,-50%)
@@ -586,20 +585,20 @@ nav.side-nav
         width: 32px
         height: 32px    
     .next-page
-        width: 38px
-        height: 38px
-        box-shadow: 0 0 4px rgba(0,0,0,.3) 
-        background: #00E676    
+        width: 40px
+        height: 40px
+        box-shadow: 0 0 4px rgba(0,0,0,.3)
+        background: #00E676
         position: fixed
         bottom: 30px
         left: 50%
-        transform: translateX(-50%) scale(0) rotate(0)  
+        transform: translateX(-50%) scale(0) rotate(0)
         transition: all .1s ease-in-out
         transition-delay: 0ms
         z-index: 1
-        padding: 14px
+        padding: 10px
         fill: #fff
-        border-radius: 50%    
+        border-radius: 50%
 
 
 .openCart
@@ -611,10 +610,14 @@ nav.side-nav
     top: 50%
     transform: translate(-50%,-50%)   
     overflow-y: scroll
-    span
-        // display: none
-    .item
-        display: block   
+    .cart-items
+        .item
+            display: block
+    form.checkoutForm
+        // display:         
+    .cart-switch
+        transform: translateX(-100%);    
+      
     svg.closeCart
         position: absolute
         display: none
@@ -628,20 +631,21 @@ nav.side-nav
         fill: $accent-light
         right: 10px
         top: 10px
-        background: rgba(#000,.03)
+        background: rgba(#000,.02)
         &:hover
             background: rgba(#000,.1)
     .next-page
         transition: all .2s ease-in-out
         transform: translateX(-50%) scale(1) rotate(360deg)  
-        box-shadow: 0 6px 6px rgba(0,0,0,0.4)
-        transition-delay: 500ms
+        box-shadow: 0 3px 6px rgba(0,0,0,0.4)
+        transition-delay: 500ms 
+         
 
     @media (max-width: 756px)
-        max-width: 90%
-        height: 90%
+        max-width: 100%
+        height: 100%
         margin: 0
-        // border-radius: 0
+        border-radius: 0
         svg.closeCart
             display: initial     
-             
+                

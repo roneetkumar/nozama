@@ -83,10 +83,26 @@
             <path
                 d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
             <path d="M0 0h24v24H0z" fill="none" /></svg>
-        <span>0</span>
+        <span class="item-counter">0</span>
         <svg class="next-page" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
             <path fill="none" d="M0 0h24v24H0V0z" /></svg>
+        <div class="cart-items">
+            <!-- <form action="" class="checkoutForm">
+                <label>Customer Name</label><br>
+                <input type="text"><br>
+                <label>Mobile No.</label><br>
+                <input type="text"><br>
+                <label>Email</label><br>
+                <input type="text"><br>
+                <label>Address</label><br>
+                <input type="text"><br>
+                <label>PIN</label><br>
+                <input type="text"><br>
+                <label>PIN</label><br>
+                <input type="text">
+            </form> -->
+        </div>
 
     </div>
     <!-- fab -->
@@ -147,14 +163,14 @@
     </div>
     <!-- login form -->
     <div class="login">
-        <div class="login-form">
+        <form class="login-form">
             <h2>Log In</h2><br>
             <label for="">Username or Email</label><br>
             <input class="inputLogin" type="text" autocomplete="username" required><br>
             <label for="">Password</label><br>
             <input class="inputPassword" type="password" autocomplete="current-password" required><br>
             <button type="submit" name="button">Submit</button>
-        </div>
+        </form>
         <div class="signup-form">
             <h2>Sign Up</h2><br>
             <label for="">Username or Email</label><br>
@@ -172,7 +188,7 @@
             <span class="mobile">Test</span><br><br>
             <label for="">Email</label><br>
             <span class="email">Test</span><br><br>
-            <button class="logoutBtn">LogOut</button>
+            <button class="logoutBtn">Log Out</button>
         </div>
         <h1 class="LoggedOut">Sign Up</h1>
         <h1 class="LoggedIn" style="display:none">Account Info</h1>

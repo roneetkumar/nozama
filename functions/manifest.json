@@ -1,11 +1,13 @@
 {
   "name": "Nozama | Online Shopping",
-  "short_name": "Nomaza",
-  "icons": [{
+  "short_name": "Nozama",
+  "icons": [
+    {
       "src": "../assets/512x512.png",
       "sizes": "512x512",
       "type": "image/png"
-}],
+    }
+  ],
   "start_url": "../index.html?homescreen=1",
   "display": "standalone",
   "orientation": "portrait",

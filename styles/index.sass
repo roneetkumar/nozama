@@ -11,7 +11,6 @@ $background: #fafafa
     100%
         box-shadow: 0 0 0 30px rgba($accent-dark,0)
 *
-
     margin: 0
     padding: 0
     font-family: Google Sans
@@ -344,6 +343,9 @@ nav.side-nav
                 font-weight: 400
                 line-height: 48px
 
+        li.menu-cart 
+            display: none       
+
         li.signin
             display: none
             @media(max-width:756px)
@@ -505,7 +507,7 @@ nav.side-nav
     height: 80px
     top: 160px
     left: 50%
-    transform: translate(-50%,0%)
+    transform: translate(-50%,0%) scale(0)
     background:#fff
     border-radius: 50%
     margin: 20px 0
@@ -534,10 +536,38 @@ nav.side-nav
     .cartHeading
         text-align: center
         display: none
-        margin: 14px
+        padding: 14px
         color: $accent-dark
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        background: #fff
     form.checkoutForm
-        display: none       
+        position: absolute;
+        top: 0;
+        width: 100%;
+        padding: 0 35px;
+        box-sizing: border-box;
+        display: none
+        transform: translate(100%)
+        margin-bottom: 30px
+        label
+            color: rgba(#000,0.7);            
+            margin-top: 4px
+        input
+            width: 100%
+            height: 50px
+
+            font-size: 14px
+            padding: 8px 10px
+            color: $accent-light
+            border: .5px solid rgba(#000,0.2);            
+            box-sizing: border-box
+            outline: 0
+            border-radius: 4px
+            transition: all .1s ease
+            &:focus
+                font-size: 24px
     .cart-items
         position: relative
         transition: transform .3s ease-in-out     
@@ -587,18 +617,18 @@ nav.side-nav
     .next-page
         width: 40px
         height: 40px
-        box-shadow: 0 0 4px rgba(0,0,0,.3)
+        // box-shadow: 0 0 4px rgba(0,0,0,.3)
         background: #00E676
         position: fixed
         bottom: 30px
         left: 50%
-        transform: translateX(-50%) scale(0) rotate(0)
+        transform: translateX(-50%) scale(0) rotate(0) 
         transition: all .1s ease-in-out
         transition-delay: 0ms
         z-index: 1
         padding: 10px
         fill: #fff
-        border-radius: 50%
+        border-radius: 50%  
 
 
 .openCart
@@ -608,15 +638,25 @@ nav.side-nav
     border-radius: 8px
     left: 50%
     top: 50%
-    transform: translate(-50%,-50%)   
+    // transform: translate(-50%,-50%) scale(1)   
     overflow-y: scroll
     .cart-items
         .item
             display: block
-    form.checkoutForm
-        // display:         
     .cart-switch
-        transform: translateX(-100%);    
+        transform: translateX(-100%);  
+    form.checkoutForm
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1em
+        
+        label
+            align-self: center
+        input    
+            align-self: center
+        @media (max-width: 500px)
+            grid-template-columns: 1fr;
+
       
     svg.closeCart
         position: absolute
@@ -636,9 +676,12 @@ nav.side-nav
             background: rgba(#000,.1)
     .next-page
         transition: all .2s ease-in-out
-        transform: translateX(-50%) scale(1) rotate(360deg)  
-        box-shadow: 0 3px 6px rgba(0,0,0,0.4)
+        transform: translateX(-50%) scale(1) rotate(360deg) 
+        // box-shadow: 0 3px 6px rgba(0,0,0,0.4)
         transition-delay: 500ms 
+    .nextClicked
+        transform: translateX(-50%) scale(1) rotate(180deg) 
+        transition-delay: 0ms 
          
 
     @media (max-width: 756px)

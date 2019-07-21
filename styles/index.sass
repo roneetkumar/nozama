@@ -10,6 +10,17 @@ $background: #fafafa
         box-shadow: 0 0 0 0px rgba($accent-dark,1)
     100%
         box-shadow: 0 0 0 30px rgba($accent-dark,0)
+
+
+@keyframes shake
+    0%
+        transform: translate(-50%,0%) scale(1)
+    50%
+        transform: translate(-80%,0%) scale(1)
+    100%
+        transform: translate(-20%,0%) scale(1)
+
+
 *
     margin: 0
     padding: 0
@@ -507,7 +518,7 @@ nav.side-nav
     height: 80px
     top: 160px
     left: 50%
-    transform: translate(-50%,0%) scale(0)
+    transform: translate(-50%,0%) scale(1)
     background:#fff
     border-radius: 50%
     margin: 20px 0
@@ -529,7 +540,7 @@ nav.side-nav
         top: 0
         right: 0
         transform: rotate(0)
-        // transition: transform .2s ease-in-out         
+        transition: transform .2s ease-in-out         
         // display: none
     svg.closeCart
         display: none

@@ -2,7 +2,7 @@ let $ = (ele) => document.querySelector(ele);
 let $$ = (ele) => document.querySelectorAll(ele);
 
 
-let colors = ['#00BCD4', '#673AB7', '#607D8B'];
+let colors = ['00BCD4', '673AB7', '607D8B', '795548', '009688', '3F51B5'];
 let selectedColor = colors[Math.floor(Math.random() * colors.length)];
 
 let li = $('ul.link-list').getElementsByTagName('li');
@@ -136,7 +136,7 @@ function logout() {
         $('.signup-form').style.display = 'block';
         $('.account-info').style.display = 'none';
     }, 500);
-    $('.cart').style.transform = 'translate(-50%, 0%) scale(0)';
+    // $('.cart').style.transform = 'translate(-50%, 0%) scale(0)';
 }
 
 function searchFunction() {
@@ -209,11 +209,6 @@ function productInfoClose() {
     overlayHide();
 }
 
-$('.cart').onclick = () => {
-    openCart();
-    overlayShow();
-    canNotScroll();
-}
 
 $('.menu-cart').onclick = () => {
     openCart();
@@ -248,8 +243,8 @@ for (let i = 0; i < li.length; i++) {
 }
 
 window.onload = function () {
-    $('header').style.background = 'linear-gradient(360deg, rgba(0,0,0,0) 0%, ' + selectedColor + ' 100%)';
-    $('footer').style.background = 'linear-gradient(360deg, ' + selectedColor + ' 0%, rgba(0,0,0,0) 100%';
+    $('header').style.background = 'linear-gradient(360deg, rgba(0,0,0,0) 0%, ' + '#' + selectedColor + ' 100%)';
+    $('footer').style.background = 'linear-gradient(360deg, ' + '#' + selectedColor + ' 0%, rgba(0,0,0,0) 100%';
     filter();
 }
 
@@ -335,6 +330,23 @@ $('.nav-menu .signin').onclick = function () {
 }
 
 
+$('.cart').onclick = () => {
+    let logged = $('.login h1.LoggedOut').style.display;
+    if (logged == 'none') {
+        openCart();
+        overlayShow();
+        canNotScroll();
+        // $('.cart').style.animation = '';
+
+    } else {
+        $('.cart').style.animation = 'shake .1s ease-in-out 2';
+        setTimeout(function () {
+            $('.cart').style.animation = '';
+        }, 400)
+    }
+}
+
+
 
 function login() {
     const userInput = $('.inputLogin').value.toUpperCase();
@@ -369,8 +381,9 @@ function login() {
                 $('.login h1.LoggedOut').style.display = 'none';
                 $('.menu-cart').style.display = 'flex';
 
-                $('.cart').style.transform = 'translate(-50%, 0%) scale(1)';
+                // $('.cart').style.transform = 'translate(-50%, 0%) scale(1)';
                 // $('.cart').style.transform = '';
+
 
 
             } else {
@@ -440,9 +453,11 @@ for (let i = 0; i < buttons.length; i++) {
             }
         });
 
+        $('.cart span').style.transform = 'rotate(360deg)'
+
         setTimeout(function () {
-            $('.cart span').style.transform = 'rotate(360deg)'
-        }, 50);
+            $('.cart span').style.transform = 'rotate(0deg)'
+        }, 200);
 
         $('.cart span').innerText = counter;
     }

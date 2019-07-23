@@ -90,26 +90,30 @@
         <div class="cart-items">
             <form action="" class="checkoutForm">
                 <!-- <label>Customer Name</label> -->
-                <input type="Text" placeholder="First Name">
+                <input type="Text" placeholder="First Name" required>
                 <!-- <label>Mobile No.</label> -->
-                <input type="Text" placeholder="Last Name">
+                <input type="Text" placeholder="Last Name" required>
 
-                <input type="tel" placeholder="Mobile Number">
+                <input type="tel" placeholder="Mobile Number" required>
                 <!-- <label>Email</label> -->
-                <input type="email" placeholder="Email">
+                <input type="email" placeholder="Email" required>
                 <!-- <label>Address</label> -->
-                <input type="Text" placeholder="Address">
+                <input type="Text" placeholder="Address" required>
                 <!-- <label>City</label> -->
-                <input type="text" placeholder="City">
+                <input type="text" placeholder="City" required>
                 <!-- <label>Province</label> -->
-                <input type="text" placeholder="Province">
+                <input type="text" placeholder="Province" required>
                 <!-- <label>Country</label> -->
-                <input type="text" placeholder="Country">
+                <input type="text" placeholder="Country" required>
 
-
+                <input type="tel" placeholder="Card Holder Name" required>
+                <!-- <label>Email</label> -->
+                <input type="email" placeholder="Card No" required>
+                <!-- <label>Address</label> -->
+                <input type="Text" placeholder="CVV" required>
+                <input type="date" placeholder="Expiration Date" required>
             </form>
         </div>
-
     </div>
     <!-- fab -->
     <a id="hook" href="#bottom" tabindex="-1">
@@ -153,6 +157,22 @@
                 </svg>
                 <h1 class="list-item-title">Cart</h1>
             </li>
+            <li class="menu-item contact">
+                <svg xmlns="https://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                    <path d="M0 0h48v48H0z" fill="none" />
+                    <path
+                        d="M10 32c0 7.73 6.27 14 14 14s14-6.27 14-14v-8H10v8zM32.25 8.74l4.2-4.2-1.65-1.65-4.61 4.61C28.31 6.57 26.23 6 24 6c-2.23 0-4.31.57-6.19 1.5L13.2 2.89l-1.65 1.65 4.2 4.2C12.28 11.28 10 15.36 10 20v2h28v-2c0-4.64-2.28-8.72-5.75-11.26zM18 18c-1.11 0-2-.9-2-2s.89-2 2-2c1.11 0 2 .9 2 2s-.89 2-2 2zm12 0c-1.11 0-2-.9-2-2s.89-2 2-2c1.11 0 2 .9 2 2s-.89 2-2 2z" />
+                </svg>
+                <h1 class="list-item-title">Contact Us</h1>
+            </li>
+            <li class="menu-item findUs">
+                <svg xmlns="https://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                    <path d="M0 0h48v48H0z" fill="none" />
+                    <path
+                        d="M10 32c0 7.73 6.27 14 14 14s14-6.27 14-14v-8H10v8zM32.25 8.74l4.2-4.2-1.65-1.65-4.61 4.61C28.31 6.57 26.23 6 24 6c-2.23 0-4.31.57-6.19 1.5L13.2 2.89l-1.65 1.65 4.2 4.2C12.28 11.28 10 15.36 10 20v2h28v-2c0-4.64-2.28-8.72-5.75-11.26zM18 18c-1.11 0-2-.9-2-2s.89-2 2-2c1.11 0 2 .9 2 2s-.89 2-2 2zm12 0c-1.11 0-2-.9-2-2s.89-2 2-2c1.11 0 2 .9 2 2s-.89 2-2 2z" />
+                </svg>
+                <h1 class="list-item-title">Find Us</h1>
+            </li>
 
             <li class="menu-item logout" style="display:none">
                 <svg xmlns="https://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
@@ -165,8 +185,7 @@
         </ul>
     </nav>
     <!-- productInfo -->
-    <div class="product-info">
-    </div>
+    <div class="product-info"></div>
     <!-- login form -->
     <div class="login">
         <form class="login-form">
@@ -199,7 +218,13 @@
         <h1 class="LoggedOut">Sign Up</h1>
         <h1 class="LoggedIn" style="display:none">Account Info</h1>
     </div>
-    </form>
+
+    <div class="contactUs">
+        <h1>Contact Us</h1>
+    </div>
+    <div class="findUsMap">
+        <h1>Find Us</h1>
+    </div>
 
 </body>
 <script src="functions/data.js" charset="utf-8"></script>

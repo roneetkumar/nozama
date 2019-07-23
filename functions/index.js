@@ -229,6 +229,14 @@ $('.findUs').onclick = () => {
 
 }
 
+function tooltip(text) {
+    $('.tooltip').innerHTML = text;
+    $('.tooltip').style.display = 'block';
+    setTimeout(() => {
+        $('.tooltip').style.display = 'none'
+    }, 800);
+}
+
 
 
 function cartIconFunction() {
@@ -242,15 +250,19 @@ function cartIconFunction() {
         overlayShow();
         canNotScroll();
         sideNavClose();
-        // $('.cart').onclick = null;
     } else {
         if (!cartOpened) {
-
             $('.cart').style.animation = 'shake .1s ease-in-out 2';
             setTimeout(function () {
                 $('.cart').style.animation = '';
             }, 400);
             window.navigator.vibrate(200);
+            if (logged != 'none') {
+                tooltip('Please Login')
+
+            } else if (itemCounter == 0) {
+                tooltip('Empty Cart')
+            }
         }
         else {
             closeCart();

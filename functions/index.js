@@ -25,7 +25,6 @@ product.forEach(product => {
 let cards = $$('main .card');
 let buttons = $$('main button');
 
-
 window.onscroll = function () {
     let fab = $('.fab svg');
     let hook = $('#hook');
@@ -135,7 +134,6 @@ function logout() {
         $('.signup-form').style.display = 'block';
         $('.account-info').style.display = 'none';
     }, 500);
-    // $('.cart').style.transform = 'translate(-50%, 0%) scale(0)';
 }
 
 function searchFunction() {
@@ -243,7 +241,6 @@ function cartIconFunction() {
     let logged = $('.login h1.LoggedOut').style.display;
     let itemCounter = $('.item-counter').innerText;
     let cartOpened = $('.cart').classList.contains('openCart');
-    // console.log(itemCounter, cartOpened);
 
     if (logged == 'none' && itemCounter != 0) {
         openCart();
@@ -372,7 +369,6 @@ $('.login h1.LoggedIn').onclick = () => toggleLogIn();
 
 $('#myinput').onkeyup = () => searchFunction();
 
-// $('.login-form button').onclick = () => login();
 $('.login-form').onsubmit = (event) => {
     event.preventDefault();
     login();
@@ -428,11 +424,6 @@ function login() {
                 $('.login h1.LoggedOut').style.display = 'none';
                 $('.menu-cart').style.display = 'flex';
 
-                // $('.cart').style.transform = 'translate(-50%, 0%) scale(1)';
-                // $('.cart').style.transform = '';
-
-
-
             } else {
                 $('.login-form .inputPassword').value = "";
                 $('.login-form .inputPassword').placeholder = "Incorrent Password";
@@ -481,49 +472,54 @@ for (let i = 0; i < buttons.length; i++) {
         $('.cart span').style.transform = 'rotate(0deg)'
         $('.cart-items').innerHTML += cartItem;
         counter += 1;
-
         event.stopPropagation();
         let removeItem = $$('.cart-items .item .removeCartItem');
-
         removeItem.forEach(button => {
             button.onclick = () => {
 
                 button.parentElement.style.transform = 'translateX(-200%)';
                 setTimeout(function () {
-                    button.parentElement.style.display = 'none';
+                    button.parentElement.remove();
                 }, 400);
                 counter -= 1;
 
                 $('.cart span').innerText = counter;
             }
         });
-
-        $('.cart span').style.transform = 'rotate(360deg)'
-
-        setTimeout(function () {
-            $('.cart span').style.transform = 'rotate(0deg)'
-        }, 200);
-
         $('.cart span').innerText = counter;
     }
 }
 
 $('.next-page').onclick = () => {
     let cartItem = $('.cart-items');
-
     if (counter > 0) {
         cartItem.classList.toggle('cart-switch');
         $('.next-page').classList.toggle('nextClicked');
     }
-
     if (cartItem.classList.contains('cart-switch')) {
         $('.cartHeading').innerText = 'Checkout';
-
+        $('')
     } else {
         $('.cartHeading').innerText = 'Cart';
     }
 }
 
+
+// let formInputs = $$('.checkoutForm input');
+
+// formInputs.forEach((input) => {
+//     console.log(input);
+
+
+
+
+// });
+
+$('.checkoutForm').onclick = () => {
+
+    console.log('hi');
+
+}
 
 
 

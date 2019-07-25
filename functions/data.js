@@ -58,6 +58,25 @@ let user = [
         mobile: "438-979-3111",
         password: "6666",
         email: "shivam@gmail.com",
+    },
+    {
+        name: {
+            first: "sunil",
+            last: "chatla",
+            id: "sunil"
+        },
+        mobile: "438-979-3111",
+        password: "7777",
+        email: "sunil@gmail.com",
+    }, {
+        name: {
+            first: "admin",
+            last: "",
+            id: "admin"
+        },
+        mobile: "438-979-3011",
+        password: "0000",
+        email: "admin@gmail.com",
     }
 ];
 

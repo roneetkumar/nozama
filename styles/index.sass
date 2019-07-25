@@ -546,7 +546,6 @@ nav.side-nav
     box-shadow:  0 0 60px rgba(#000,.2)   
     will-change: transform
     overflow: visible
-    
     .item-counter
         color: white
         background: #ff1100
@@ -558,9 +557,6 @@ nav.side-nav
         border-radius: 50%
         top: 0
         right: 0
-        transform: rotate(0)
-        transition: transform .2s ease-in-out    
-        // display: none
     svg.closeCart
         display: none
         z-index: 1
@@ -582,14 +578,12 @@ nav.side-nav
         display: none
         transform: translate(100%)
         margin-bottom: 30px
-
         label
             color: rgba(#000,0.7);            
             margin-top: 4px
         input
             width: 100%
             height: 50px
-
             font-size: 14px
             padding: 8px 10px
             color: $accent-light
@@ -601,10 +595,11 @@ nav.side-nav
             &:focus
                 font-size: 24px
     .paymentForm
-        // position: relative            
     .cart-items
+        // height: 610px
         position: relative
-        transition: transform .3s ease-in-out     
+        transition: transform .3s ease-in-out  
+        // overflow: scroll   
         .item
             position: relative
             display: none
@@ -664,7 +659,6 @@ nav.side-nav
         fill: #fff
         border-radius: 50%  
 
-
 .openCart
     position: fixed
     max-width: 700px
@@ -672,8 +666,7 @@ nav.side-nav
     border-radius: 8px
     left: 50%
     top: 50%
-    // transform: translate(-50%,-50%) scale(1)   
-    overflow-y: scroll
+    overflow: hidden visible
     .cart-items
         .item
             display: block
@@ -733,7 +726,7 @@ nav.side-nav
 .contactUs,.findUsMap
     width: 100%
     max-width: 500px
-    height: 500px
+    min-height: 500px
     background: #fff
     border-radius: 8px
     position: fixed
@@ -744,6 +737,9 @@ nav.side-nav
     transition: all 155ms ease-in-out
     will-change: transform
     z-index: 1
+    overflow: hidden
+    padding: 10px
+    box-sizing: border-box
     h1
         text-align: center
         margin: 20px 0

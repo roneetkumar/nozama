@@ -39,45 +39,45 @@ window.onscroll = function () {
     }
 };
 
-const productInfoShow = () => {
+function productInfoShow() {
     $('.product-info').classList.add('isOpened');
 }
 
-const productInfoHide = () => {
+function productInfoHide() {
     $('.product-info').classList.remove('isOpened');
 }
 
-const canScroll = () => {
+function canScroll() {
     $('body').style.overflow = 'initial';
 }
 
-const canNotScroll = () => {
+function canNotScroll() {
     $('body').style.overflow = 'hidden';
 }
 
-const searchOpen = () => {
+function searchOpen() {
     $('.topbar').classList.add('searchOpen');
 }
 
-const searchClose = () => {
+function searchClose() {
     $('.topbar').classList.remove('searchOpen');
 }
 
-const sideNavOpen = () => {
+function sideNavOpen() {
     $('.side-nav').style.transform = 'translateX(0)';
     $('.search').style.zIndex = '0';
 }
 
-const sideNavClose = () => {
+function sideNavClose() {
     $('.side-nav').style.transform = 'translateX(-312px)';
 }
 
-const loginShow = () => {
+function loginShow() {
     $('.search').style.zIndex = '0';
     $('.login').style.transform = 'translate(-50%,-50%) scale(1)';
 }
 
-const loginHide = () => {
+function loginHide() {
     $('.login').style.transform = 'translate(-50%,-50%) scale(0)';
 }
 
@@ -89,7 +89,7 @@ function searchInputCheck() {
     }
 }
 
-const overlayHide = () => {
+function overlayHide() {
     $('.overlay').style.display = 'none';
     $('.search').style.zIndex = '1';
     $('.cart').style.zIndex = '0';
@@ -97,13 +97,29 @@ const overlayHide = () => {
     canScroll();
 }
 
-const overlayShow = () => {
+function overlayShow() {
     $('.overlay').style.display = 'block';
     $('.overlay').style.opacity = '1';
     canNotScroll();
 }
 
-const toggleLogIn = () => {
+function tooltip(text) {
+    $('.tooltip').innerHTML = text;
+    $('.tooltip').style.display = 'block';
+    setTimeout(() => {
+        $('.tooltip').style.display = 'none'
+    }, 800);
+}
+
+
+function productInfoClose() {
+    productInfoHide();
+    canScroll();
+    overlayHide();
+}
+
+
+function toggleLogIn() {
     $('.login h1.LoggedOut').classList.toggle('login-switch');
     $('.login h1.LoggedIn').classList.toggle('login-switch');
     if ($('.login h1.LoggedOut').classList.contains('login-switch') || $('.login h1.LoggedOut').classList.contains('login-switch')) {
@@ -116,6 +132,7 @@ const toggleLogIn = () => {
 }
 
 function logout() {
+    // clear();
     $('.nav-heading h1.title').innerHTML = '';
     $('.nav-heading a h1.email').innerHTML = '';
     $('.nav-heading a').href = '';
@@ -134,7 +151,9 @@ function logout() {
         $('.signup-form').style.display = 'block';
         $('.account-info').style.display = 'none';
     }, 500);
+    sessionStorage.clear();
 }
+
 
 function searchFunction() {
     let input = document.getElementById('myinput').value.toUpperCase();
@@ -201,15 +220,8 @@ function closeCart() {
     }, 300);
 }
 
-function productInfoClose() {
-    productInfoHide();
-    canScroll();
-    overlayHide();
-}
-
 
 $('.menu-cart').onclick = () => {
-
     cartIconFunction();
 }
 
@@ -217,24 +229,13 @@ $('.contact').onclick = () => {
     $('.contactUs').style.transform = 'translate(-50%,-50%)';
     sideNavClose();
     overlayShow();
-
 }
 
 $('.findUs').onclick = () => {
     $('.findUsMap').style.transform = 'translate(-50%,-50%)';
     sideNavClose();
     overlayShow();
-
 }
-
-function tooltip(text) {
-    $('.tooltip').innerHTML = text;
-    $('.tooltip').style.display = 'block';
-    setTimeout(() => {
-        $('.tooltip').style.display = 'none'
-    }, 800);
-}
-
 
 
 function cartIconFunction() {
@@ -267,15 +268,11 @@ function cartIconFunction() {
             canScroll();
             event.stopPropagation();
         }
-
     }
 }
 
-
 $('.cart').onclick = () => {
-
     cartIconFunction();
-
 }
 
 $('.closeCart').onclick = (event) => {
@@ -283,8 +280,6 @@ $('.closeCart').onclick = (event) => {
     overlayHide();
     canScroll();
     event.stopPropagation();
-    // $('.cart').style.transform = 'translate(-50%, 0%) scale(1)'
-
 }
 
 $('.menu').onclick = function () {
@@ -307,6 +302,10 @@ window.onload = function () {
     $('header').style.background = 'linear-gradient(360deg, rgba(0,0,0,0) 0%, ' + '#' + selectedColor + ' 100%)';
     $('footer').style.background = 'linear-gradient(360deg, ' + '#' + selectedColor + ' 0%, rgba(0,0,0,0) 100%';
     filter();
+
+    // if (sessionStorage.id != null) {
+    loginSteps();
+    // }
 }
 
 for (let i = 0; i < cards.length; i++) {
@@ -391,6 +390,45 @@ $('.nav-menu .signin').onclick = function () {
 }
 
 
+function loginSteps() {
+    if (sessionStorage.id != null) {
+        overlayHide();
+        loginHide();
+        $('ul.nav-menu .logout').style.display = 'block';
+        $('ul.nav-menu .signin h1').innerText = 'Account';
+        setTimeout(function () {
+            $('.login-form').style.display = 'none';
+            $('.signup-form').style.display = 'none';
+            $('.account-info').style.display = 'block';
+        }, 500);
+
+        $('.login h1.LoggedIn').style.display = 'flex';
+        $('.login h1.LoggedOut').style.display = 'none';
+        $('.menu-cart').style.display = 'flex';
+
+        $('.topbar span').innerHTML = sessionStorage.fname + ' ' + sessionStorage.lname;
+        $('.nav-heading h1.title').innerHTML = sessionStorage.fname + ' ' + sessionStorage.lname;
+        $('.nav-heading a h1.email').innerHTML = sessionStorage.email;
+        $('.nav-heading a').href = 'mailto: ${sessionStorage.email}';
+
+        $('.account-info span.name').innerText = sessionStorage.fname + ' ' + sessionStorage.lname;
+        $('.account-info span.mobile').innerText = sessionStorage.mobile;
+        $('.account-info span.email').innerText = sessionStorage.email;
+    }
+    else {
+
+        $('.nav-heading h1.title').innerHTML = '';
+        $('.nav-heading a h1.email').innerHTML = '';
+        $('.nav-heading a').href = '';
+        $('.topbar span').innerHTML = 'Sign Up | Log In';
+        $('.account-info span.name').innerText = '';
+        $('.account-info span.mobile').innerText = '';
+        $('.account-info span.email').innerText = '';
+
+    }
+
+}
+
 function login() {
     const userInput = $('.inputLogin').value.toUpperCase();
     const userPassword = $('.inputPassword').value.toUpperCase();
@@ -400,29 +438,15 @@ function login() {
         if (userInput === user[i].name.id.toUpperCase() || userInput === user[i].email.toUpperCase()) {
             foundUser = true;
             if (userPassword === user[i].password) {
-                $('.topbar span').innerHTML = user[i].name.first + ' ' + user[i].name.last;
-                $('.nav-heading h1.title').innerHTML = user[i].name.first + ' ' + user[i].name.last;
-                $('.nav-heading a h1.email').innerHTML = user[i].email;
-                $('.nav-heading a').href = 'mailto: ${user[i].email}';
 
-                overlayHide();
-                loginHide();
+                sessionStorage.id = user[i].name.id;
+                sessionStorage.fname = user[i].name.first;
+                sessionStorage.lname = user[i].name.last;
+                sessionStorage.email = user[i].email;
+                sessionStorage.mobile = user[i].mobile;
+                sessionStorage.password = user[i].password;
 
-                $('ul.nav-menu .signin h1').innerText = 'Account';
-                $('ul.nav-menu .logout').style.display = 'block';
-
-                setTimeout(function () {
-                    $('.login-form').style.display = 'none';
-                    $('.signup-form').style.display = 'none';
-                    $('.account-info').style.display = 'block'
-                }, 500);
-
-                $('.account-info span.name').innerText = user[i].name.first + ' ' + user[i].name.last;
-                $('.account-info span.mobile').innerText = user[i].mobile;
-                $('.account-info span.email').innerText = user[i].email;
-                $('.login h1.LoggedIn').style.display = 'flex';
-                $('.login h1.LoggedOut').style.display = 'none';
-                $('.menu-cart').style.display = 'flex';
+                loginSteps();
 
             } else {
                 $('.login-form .inputPassword').value = "";
@@ -498,28 +522,8 @@ $('.next-page').onclick = () => {
     }
     if (cartItem.classList.contains('cart-switch')) {
         $('.cartHeading').innerText = 'Checkout';
-        $('')
     } else {
         $('.cartHeading').innerText = 'Cart';
     }
 }
-
-
-// let formInputs = $$('.checkoutForm input');
-
-// formInputs.forEach((input) => {
-//     console.log(input);
-
-
-
-
-// });
-
-$('.checkoutForm').onclick = () => {
-
-    console.log('hi');
-
-}
-
-
 

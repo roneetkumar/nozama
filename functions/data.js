@@ -262,6 +262,83 @@ let product = [
         categories: "Food"
     },
     {
+        name: "Tommy Hilfiger Men's",
+        price: 46,
+        imgSrc: "https://images-na.ssl-images-amazon.com/images/I/41QfY-Rvr5L._SL260_SX200_CR0,0,200,260_.jpg",
+        categories: "Clothes"
+    },
+    {
+        name: "Thrasher Flame Short",
+        price: 22,
+        imgSrc: "https://images-na.ssl-images-amazon.com/images/I/41mUyabV6pL._SL260_SX200_CR0,0,200,260_.jpg",
+        categories: "Food"
+    },
+    {
+        name: "Champion Mens Classic",
+        price: 55,
+        imgSrc: "https://images-na.ssl-images-amazon.com/images/I/41Y1OMN9XUL._SL200_SY260_CR0,0,200,260_.jpg",
+        categories: "Clothes"
+    },
+    {
+        name: "Vans Men's Classic",
+        price: 32,
+        imgSrc: "https://images-na.ssl-images-amazon.com/images/I/41oYL8aoVvL._SL200_CR0,0,200,260_.jpg",
+        categories: "Clothes"
+    },
+    {
+        name: "CHEERIOS Chocolate",
+        price: 2,
+        imgSrc: "https://m.media-amazon.com/images/I/816s9s1J9EL._AC_UL320_.jpg",
+        categories: "Food"
+    },
+    {
+        name: "CHEERIOS Chocolate",
+        price: 2,
+        imgSrc: "https://m.media-amazon.com/images/I/816s9s1J9EL._AC_UL320_.jpg",
+        categories: "Food"
+    },
+    {
+        name: "CHEERIOS Chocolate",
+        price: 2,
+        imgSrc: "https://m.media-amazon.com/images/I/816s9s1J9EL._AC_UL320_.jpg",
+        categories: "Food"
+    },
+    {
+        name: "CHEERIOS Chocolate",
+        price: 2,
+        imgSrc: "https://m.media-amazon.com/images/I/816s9s1J9EL._AC_UL320_.jpg",
+        categories: "Food"
+    },
+    {
+        name: "CHEERIOS Chocolate",
+        price: 2,
+        imgSrc: "https://m.media-amazon.com/images/I/816s9s1J9EL._AC_UL320_.jpg",
+        categories: "Food"
+    },
+    {
+        name: "CHEERIOS Chocolate",
+        price: 2,
+        imgSrc: "https://m.media-amazon.com/images/I/816s9s1J9EL._AC_UL320_.jpg",
+        categories: "Food"
+    },
+    {
+        name: "CHEERIOS Chocolate",
+        price: 2,
+        imgSrc: "https://m.media-amazon.com/images/I/816s9s1J9EL._AC_UL320_.jpg",
+        categories: "Food"
+    },
+    {
+        name: "CHEERIOS Chocolate",
+        price: 2,
+        imgSrc: "https://m.media-amazon.com/images/I/816s9s1J9EL._AC_UL320_.jpg",
+        categories: "Food"
+    },
+    {
+        name: "CHEERIOS Chocolate",
+        price: 2,
+        imgSrc: "https://m.media-amazon.com/images/I/816s9s1J9EL._AC_UL320_.jpg",
+        categories: "Food"
+    }, {
         name: "CHEERIOS Chocolate",
         price: 2,
         imgSrc: "https://m.media-amazon.com/images/I/816s9s1J9EL._AC_UL320_.jpg",

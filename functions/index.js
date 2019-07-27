@@ -302,10 +302,7 @@ window.onload = function () {
     $('header').style.background = 'linear-gradient(360deg, rgba(0,0,0,0) 0%, ' + '#' + selectedColor + ' 100%)';
     $('footer').style.background = 'linear-gradient(360deg, ' + '#' + selectedColor + ' 0%, rgba(0,0,0,0) 100%';
     filter();
-
-    // if (sessionStorage.id != null) {
     loginSteps();
-    // }
 }
 
 for (let i = 0; i < cards.length; i++) {
@@ -527,3 +524,16 @@ $('.next-page').onclick = () => {
     }
 }
 
+function checkNumber(string) {
+    return /[a-z]/.test(string);
+}
+
+let n = $('.n');
+
+console.log(n);
+
+
+n.onkeyup = () => {
+    console.log('hi');
+
+}

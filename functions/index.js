@@ -210,7 +210,6 @@ function openCart() {
 function closeCart() {
     if ($('.cart').classList.contains('openCart')) {
         $('.cart').style.transform = 'translate(-50%, 0%) scale(1)'
-        // $('.cart').onclick = '';
     }
     $('.cart').classList.remove('openCart');
     $('.cart h1').style.display = '';
@@ -393,6 +392,7 @@ function loginSteps() {
         loginHide();
         $('ul.nav-menu .logout').style.display = 'block';
         $('ul.nav-menu .signin h1').innerText = 'Account';
+
         setTimeout(function () {
             $('.login-form').style.display = 'none';
             $('.signup-form').style.display = 'none';
@@ -434,7 +434,7 @@ function login() {
     for (let i = 0; i < user.length; i++) {
         if (userInput === user[i].name.id.toUpperCase() || userInput === user[i].email.toUpperCase()) {
             foundUser = true;
-            if (userPassword === user[i].password) {
+            if (userPassword === user[i].password.toUpperCase()) {
 
                 sessionStorage.id = user[i].name.id;
                 sessionStorage.fname = user[i].name.first;
@@ -447,7 +447,7 @@ function login() {
 
             } else {
                 $('.login-form .inputPassword').value = "";
-                $('.login-form .inputPassword').placeholder = "Incorrent Password";
+                $('.login-form .inputPassword').placeholder = "Incorrect Password";
             }
         }
     }
@@ -478,26 +478,24 @@ for (let i = 0; i < buttons.length; i++) {
     const button = buttons[i];
 
     button.onclick = (event) => {
+        event.stopPropagation();
         const cartItem = `
         <div class="item">
-            <h1>  ${button.parentElement.querySelector('h1').innerText
-            } </h1 >
-        <hr>
+            <h1>${button.parentElement.querySelector('h1').innerText}</h1 >
+            <hr>
             <svg class="removeCartItem" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path
                     d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
                 <path d="M0 0h24v24H0z" fill="none" /></svg>
             <h1 class="item-price"> ${button.parentElement.querySelector('h2').innerText} </h1>
-        </div>
-    `;
+        </div>`;
+
         $('.cart span').style.transform = 'rotate(0deg)'
         $('.cart-items').innerHTML += cartItem;
         counter += 1;
-        event.stopPropagation();
         let removeItem = $$('.cart-items .item .removeCartItem');
         removeItem.forEach(button => {
             button.onclick = () => {
-
                 button.parentElement.style.transform = 'translateX(-200%)';
                 setTimeout(function () {
                     button.parentElement.remove();
@@ -528,12 +526,10 @@ function checkNumber(string) {
     return /[a-z]/.test(string);
 }
 
-let n = $('.n');
+let checkoutForm = $('form.checkoutForm');
+console.log(checkoutForm);
 
-console.log(n);
-
-
-n.onkeyup = () => {
+checkoutForm.onsubmit = (event) => {
     console.log('hi');
-
+    event.preventDefault();
 }

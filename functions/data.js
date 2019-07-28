@@ -5,7 +5,7 @@ let user = [
             last: "kumar",
             id: "roneet"
         },
-        mobile: "438-979-3111",
+        mobile: "438-972-3331",
         password: "1111",
         email: "roneetparida@gmail.com",
     },
@@ -15,7 +15,7 @@ let user = [
             last: "Virdi",
             id: "roop"
         },
-        mobile: "438-979-3111",
+        mobile: "438-919-3211",
         password: "2222",
         email: "virdirocking.96@gmail.com",
     },
@@ -25,7 +25,7 @@ let user = [
             last: "rao",
             id: "vinay"
         },
-        mobile: "438-979-3111",
+        mobile: "438-979-3981",
         password: "3333",
         email: "vinay@gmail.com",
     },
@@ -35,7 +35,7 @@ let user = [
             last: "shaikh",
             id: "resh"
         },
-        mobile: "438-979-3111",
+        mobile: "438-919-3143",
         password: "4444",
         email: "reshma@gmail.com",
     },
@@ -45,7 +45,7 @@ let user = [
             last: "sharma",
             id: "davinder"
         },
-        mobile: "438-979-3111",
+        mobile: "438-929-5111",
         password: "5555",
         email: "davinder@gmail.com",
     },
@@ -55,7 +55,7 @@ let user = [
             last: "patel",
             id: "shivam"
         },
-        mobile: "438-979-3111",
+        mobile: "438-479-3161",
         password: "6666",
         email: "shivam@gmail.com",
     },
@@ -65,7 +65,7 @@ let user = [
             last: "chatla",
             id: "sunil"
         },
-        mobile: "438-979-3111",
+        mobile: "438-379-3211",
         password: "7777",
         email: "sunil@gmail.com",
     }, {
@@ -75,7 +75,7 @@ let user = [
             id: "admin"
         },
         mobile: "438-979-3011",
-        password: "0000",
+        password: "admin",
         email: "admin@gmail.com",
     }
 ];

@@ -546,6 +546,9 @@ nav.side-nav
     box-shadow:  0 0 60px rgba(#000,.2)   
     will-change: transform
     overflow: visible
+    scroll-snap-type: mandatory
+    scroll-snap-points-y: repeat(100%)
+    scroll-snap-type: y mandatory
     .item-counter
         color: white
         background: #ff1100
@@ -559,7 +562,7 @@ nav.side-nav
         right: 0
     svg.closeCart
         display: none
-        z-index: 1
+        // z-index: 2
     .cartHeading
         text-align: center
         display: none
@@ -569,41 +572,23 @@ nav.side-nav
         top: 0;
         z-index: 1;
         background: #fff
-    form.checkoutForm,.paymentForm
-        position: absolute;
-        top: 0;
-        width: 100%;
-        padding: 0 35px;
-        box-sizing: border-box;
-        display: none
-        transform: translate(100%)
-        margin-bottom: 30px
-        label
-            color: rgba(#000,0.7);            
-            margin-top: 4px
-        input
-            width: 100%
-            height: 50px
-            font-size: 14px
-            padding: 8px 10px
-            color: $accent-light
-            border: .5px solid rgba(#000,0.2);            
-            box-sizing: border-box
-            outline: 0 
-            border-radius: 4px
-            transition: all .1s ease
-            &:focus
-                font-size: 24px
-        .submit, .reset
-            background: $accent-light
-            color: #fff
 
-    .paymentForm
+    .cart-icon
+        @include centered
+        transform: translate(-50%,-50%)
+        width: 100px
+        display: flex
+        justify-content: space-between
+        will-change: transform
+        fill: $accent-light 
+        width: 32px
+        height: 32px    
+
     .cart-items
-        // height: 610px
         position: relative
         transition: transform .3s ease-in-out  
-        // overflow: scroll   
+        height: 100%
+        scroll-snap-align: start
         .item
             position: relative
             display: none
@@ -636,32 +621,61 @@ nav.side-nav
                 right: 2px
                 &:hover
                     background: rgba(#000,.04) 
+    hr
+        border: 0.5px solid
+        opacity: 0
+        width: 95%
+        margin: auto
+    form.checkoutForm
+        // width: 500px
+        height: 100%
+        top: 0;
+        width: 100%;
+        padding: 0 35px;
+        box-sizing: border-box;
+        display: none
+        margin-bottom: 30px
+        transition: transform .3s ease-in-out 
+        align-content: center
+        scroll-snap-align: start
+        label
+            color: rgba(#000,0.7);            
+            margin-top: 4px
+        input
+            width: 100%
+            height: 50px
+            font-size: 14px
+            padding: 8px 10px
+            color: $accent-light
+            border: .5px solid rgba(#000,0.1);            
+            box-sizing: border-box
+            outline: 0 
+            border-radius: 4px
+            transition: all .1s ease
+            outline: 0
+            &:focus
+                font-size: 24px
+        .submit, .reset
+            background: $accent-light
+            color: #fff
 
-    .cart-icon
-        @include centered
-        transform: translate(-50%,-50%)
-        width: 100px
-        display: flex
-        justify-content: space-between
-        will-change: transform
-        fill: $accent-light 
-        width: 32px
-        height: 32px    
-    .next-page
-        width: 40px
-        height: 40px
-        // box-shadow: 0 0 4px rgba(0,0,0,.3)
-        background: #00E676
-        position: fixed
-        bottom: 30px
-        left: 50%
-        transform: translateX(-50%) scale(0) rotate(0) 
-        transition: all .1s ease-in-out
-        transition-delay: 0ms
-        z-index: 1
-        padding: 10px
-        fill: #fff
-        border-radius: 50%  
+    
+    
+    // .next-page
+    //     width: 40px
+    //     height: 40px
+    //     // box-shadow: 0 0 4px rgba(0,0,0,.3)
+    //     background: #00E676
+    //     position: fixed
+    //     bottom: 30px
+    //     left: 50%
+    //     transform: translateX(-50%) scale(0) rotate(0) 
+    //     transition: all .1s ease-in-out
+    //     transition-delay: 0ms
+    //     z-index: 1
+    //     padding: 10px
+    //     fill: #fff
+    //     border-radius: 50%  
 
 .openCart
     position: fixed
@@ -671,11 +685,17 @@ nav.side-nav
     left: 50%
     top: 50%
     overflow: hidden visible
+    .cartHeading
+        display: block
     .cart-items
         .item
             display: block
     .cart-switch
-        transform: translateX(-100%);  
+        transform: translateX(-100%); 
+        
+    hr
+        opacity: 0.05
+
     form.checkoutForm,.paymentForm
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -686,9 +706,7 @@ nav.side-nav
         input    
             align-self: center
         @media (max-width: 500px)
-            grid-template-columns: 1fr;
-    .paymentForm        
-        position: relative            
+            grid-template-columns: 1fr;          
 
     svg.closeCart
         position: absolute
@@ -704,6 +722,7 @@ nav.side-nav
         right: 10px
         top: 10px
         background: rgba(#000,.02)
+        z-index: 2
         &:hover
             background: rgba(#000,.1)
     .next-page

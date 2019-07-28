@@ -491,7 +491,9 @@ for (let i = 0; i < buttons.length; i++) {
         </div>`;
 
         $('.cart span').style.transform = 'rotate(0deg)'
+
         $('.cart-items').innerHTML += cartItem;
+
         counter += 1;
         let removeItem = $$('.cart-items .item .removeCartItem');
         removeItem.forEach(button => {
@@ -509,27 +511,69 @@ for (let i = 0; i < buttons.length; i++) {
     }
 }
 
-$('.next-page').onclick = () => {
-    let cartItem = $('.cart-items');
-    if (counter > 0) {
-        cartItem.classList.toggle('cart-switch');
-        $('.next-page').classList.toggle('nextClicked');
-    }
-    if (cartItem.classList.contains('cart-switch')) {
-        $('.cartHeading').innerText = 'Checkout';
-    } else {
-        $('.cartHeading').innerText = 'Cart';
-    }
-}
+// $('.next-page').onclick = () => {
+//     let cartItem = $('.cart-items');
+//     if (counter > 0) {
+//         cartItem.classList.toggle('cart-switch');
+//         $('.next-page').classList.toggle('nextClicked');
+//         $('.checkoutForm').style.transform = 'translateX(0%)';
+//     }
+//     if (cartItem.classList.contains('cart-switch')) {
+//         $('.cartHeading').innerText = 'Checkout';
+//     } else {
+//         $('.cartHeading').innerText = 'Cart';
+//     }
+// }
 
 function checkNumber(string) {
-    return /[a-z]/.test(string);
+    return /^[A-Z][a-z]+$/.test(string);
 }
 
-let checkoutForm = $('form.checkoutForm');
-console.log(checkoutForm);
+let FormInputs = {
+    firstName: document.querySelector("input[placeholder='First Name']"),
+    lastName: document.querySelector("input[placeholder='Last Name']"),
+    mobile: document.querySelector("input[placeholder='Mobile Number']"),
+    cardNo: document.querySelector("input[placeholder='Card No']"),
+    cvv: document.querySelector("input[placeholder='CVV']"),
 
-checkoutForm.onsubmit = (event) => {
-    console.log('hi');
-    event.preventDefault();
+}
+
+FormInputs.firstName.onkeyup = () => {
+    if (checkNumber(FormInputs.firstName.value)) {
+        FormInputs.firstName.style.border = '2px solid #00E676';
+    } else {
+        FormInputs.firstName.style.border = '2px solid #f44336';
+    }
+}
+
+FormInputs.lastName.onkeyup = () => {
+    if (checkNumber(FormInputs.lastName.value)) {
+        FormInputs.lastName.style.border = '2px solid #00E676';
+    } else {
+        FormInputs.lastName.style.border = '2px solid #f44336';
+    }
+}
+
+FormInputs.mobile.onkeyup = () => {
+    if (/^[0-9]{3}\-[0-9]{3}\-[0-9]{4}$/.test(FormInputs.mobile.value)) {
+        FormInputs.mobile.style.border = '2px solid #00E676';
+    } else {
+        FormInputs.mobile.style.border = '2px solid #f44336';
+    }
+}
+
+FormInputs.cardNo.onkeyup = () => {
+    if (/^[0-9]{4}\s[0-9]{4}\s[0-9]{4}\s[0-9]{4}$/.test(FormInputs.cardNo.value)) {
+        FormInputs.cardNo.style.border = '2px solid #00E676';
+    } else {
+        FormInputs.cardNo.style.border = '2px solid #f44336';
+    }
+}
+
+FormInputs.cvv.onkeyup = () => {
+    if (/^[0-9]{3}$/.test(FormInputs.cvv.value)) {
+        FormInputs.cvv.style.border = '2px solid #00E676';
+    } else {
+        FormInputs.cvv.style.border = '2px solid #f44336';
+    }
 }

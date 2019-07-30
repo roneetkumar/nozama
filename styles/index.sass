@@ -546,7 +546,7 @@ nav.side-nav
     box-shadow:  0 0 60px rgba(#000,.2)   
     will-change: transform
     overflow: visible
-    scroll-snap-type: y mandatory
+    -webkit-scroll-snap-type: mandatory;
     .item-counter
         color: white
         background: #ff1100
@@ -560,8 +560,8 @@ nav.side-nav
         right: 0
     svg.closeCart
         display: none
-        // z-index: 2
     .cartHeading
+        -webkit-scroll-snap-coordinate: 0% 0%;
         text-align: center
         display: none
         padding: 14px
@@ -586,7 +586,6 @@ nav.side-nav
         position: relative
         transition: transform .3s ease-in-out  
         height: 100%
-        scroll-snap-align: start
         .item
             position: relative
             display: none
@@ -635,7 +634,7 @@ nav.side-nav
         margin-bottom: 30px
         transition: transform .3s ease-in-out 
         align-content: center
-        scroll-snap-align: start
+        // scroll-snap-align: start
         label
             color: rgba(#000,0.7);            
             margin-top: 4px

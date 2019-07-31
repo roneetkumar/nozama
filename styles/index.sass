@@ -546,7 +546,12 @@ nav.side-nav
     box-shadow:  0 0 60px rgba(#000,.2)   
     will-change: transform
     overflow: visible
-    -webkit-scroll-snap-type: mandatory;
+    scroll-snap-type: y mandatory;
+    .total
+        text-align: right
+        color: #00E676 !important
+        @media (max-width: 756px)
+            text-align: left
     .item-counter
         color: white
         background: #ff1100
@@ -561,15 +566,15 @@ nav.side-nav
     svg.closeCart
         display: none
     .cartHeading
-        -webkit-scroll-snap-coordinate: 0% 0%;
         text-align: center
         display: none
         padding: 14px
         color: $accent-dark
-        position: sticky;
-        top: 0;
-        z-index: 1;
+        position: sticky
+        top: 0
+        z-index: 1
         background: #fff
+        scroll-snap-align: start
 
     .cart-icon
         @include centered
@@ -586,6 +591,7 @@ nav.side-nav
         position: relative
         transition: transform .3s ease-in-out  
         height: 100%
+        scroll-snap-align: start
         .item
             position: relative
             display: none
@@ -633,8 +639,9 @@ nav.side-nav
         display: none
         margin-bottom: 30px
         transition: transform .3s ease-in-out 
-        align-content: center
-        // scroll-snap-align: start
+        // align-content: center
+        h1
+            color: $accent-light       
         label
             color: rgba(#000,0.7);            
             margin-top: 4px

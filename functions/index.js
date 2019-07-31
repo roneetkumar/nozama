@@ -473,9 +473,9 @@ function login() {
 // lazyLoad();
 
 let counter = 0;
+let total = 0;
 for (let i = 0; i < buttons.length; i++) {
     const button = buttons[i];
-
     button.onclick = (event) => {
         event.stopPropagation();
         const cartItem = `
@@ -488,6 +488,14 @@ for (let i = 0; i < buttons.length; i++) {
                 <path d="M0 0h24v24H0z" fill="none" /></svg>
             <h1 class="item-price"> ${button.parentElement.querySelector('h2').innerText} </h1>
         </div>`;
+
+        let price = button.parentElement.querySelector('h2').innerText;
+
+        price = price.substring(1, price.length - 3);
+
+        total += +price;
+
+        $('.total').innerText = "$" + total + " CAD";
 
         $('.cart span').style.transform = 'rotate(0deg)'
 
@@ -504,29 +512,22 @@ for (let i = 0; i < buttons.length; i++) {
                 counter -= 1;
 
                 $('.cart span').innerText = counter;
+                price = button.parentElement.querySelector('h1.item-price').innerText;
+                price = price.substring(1, price.length - 3);
+                total -= +price;
+                $('.total').innerText = "$" + total + " CAD";
             }
         });
         $('.cart span').innerText = counter;
     }
 }
 
-// $('.next-page').onclick = () => {
-//     let cartItem = $('.cart-items');
-//     if (counter > 0) {
-//         cartItem.classList.toggle('cart-switch');
-//         $('.next-page').classList.toggle('nextClicked');
-//         $('.checkoutForm').style.transform = 'translateX(0%)';
-//     }
-//     if (cartItem.classList.contains('cart-switch')) {
-//         $('.cartHeading').innerText = 'Checkout';
-//     } else {
-//         $('.cartHeading').innerText = 'Cart';
-//     }
-// }
-
 function checkNumber(string) {
     return /^[A-Z][a-z]+$/.test(string);
 }
+
+
+
 
 let FormInputs = {
     firstName: document.querySelector("input[placeholder='First Name']"),
@@ -536,8 +537,13 @@ let FormInputs = {
     cvv: document.querySelector("input[placeholder='CVV']"),
     city: document.querySelector("input[placeholder='City']"),
     date: document.querySelector("input[placeholder='Expiration Date']"),
+    country: document.querySelector("input[placeholder='Country']"),
+    province: document.querySelector("input[placeholder='Province']"),
+};
 
-}
+
+// console.log(FormInputs.firstName);
+
 
 FormInputs.firstName.onkeyup = () => {
     if (FormInputs.firstName.value != '') {
@@ -612,23 +618,52 @@ FormInputs.city.onkeyup = () => {
     }
 }
 
+
 let date = new Date();
 date = date.getFullYear();
 
-FormInputs.date.min = `${date}-01-01`;
-FormInputs.date.max = `${date + 20}-01-01`;
-
+FormInputs.date.min = `${date}-01`;
+FormInputs.date.max = `${date + 20}-01`;
 
 FormInputs.date.onkeyup = () => {
-
     if (FormInputs.date.value != '') {
-        if (/\d{4}-\d{2}-\d{2}$/.test(FormInputs.date.value)) {
+        if (/\d{4}-\d{2}$/.test(FormInputs.date.value)) {
             FormInputs.date.style.border = '2px solid #00E676';
         } else {
-            // console.log(FormInputs.date.value);
             FormInputs.date.style.border = '2px solid #f44336';
         }
     } else {
         FormInputs.date.style.border = '.5px solid rgba(0,0,0,0.1)';
     }
 }
+
+FormInputs.country.onkeyup = () => {
+    if (FormInputs.country.value != '') {
+        if (checkNumber(FormInputs.country.value)) {
+            FormInputs.country.style.border = '2px solid #00E676';
+        } else {
+            FormInputs.country.style.border = '2px solid #f44336';
+        }
+    } else {
+        FormInputs.country.style.border = '.5px solid rgba(0,0,0,0.1)';
+    }
+}
+
+FormInputs.province.onkeyup = () => {
+    if (FormInputs.province.value != '') {
+        if (/[A-Z]{2}/.test(FormInputs.province.value)) {
+            FormInputs.province.style.border = '2px solid #00E676';
+        } else {
+            FormInputs.province.style.border = '2px solid #f44336';
+        }
+    } else {
+        FormInputs.province.style.border = '.5px solid rgba(0,0,0,0.1)';
+    }
+}
+
+
+$('.checkoutForm').onsubmit = (event) => {
+    event.preventDefault();
+    console.log('hi');
+}
+

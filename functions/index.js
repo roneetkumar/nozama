@@ -220,6 +220,7 @@ function closeCart() {
     }
     $('.cart').classList.remove('openCart');
     $('.cart h1').style.display = '';
+
     setTimeout(function () {
         $('.cart svg').style.display = '';
         $('.cart span').style.display = '';
@@ -526,23 +527,22 @@ function checkNumber(string) {
     return /^[A-Z][a-z]+$/.test(string);
 }
 
-
-
-
 let FormInputs = {
-    firstName: document.querySelector("input[placeholder='First Name']"),
-    lastName: document.querySelector("input[placeholder='Last Name']"),
-    mobile: document.querySelector("input[placeholder='Mobile Number']"),
-    cardNo: document.querySelector("input[placeholder='Card No']"),
-    cvv: document.querySelector("input[placeholder='CVV']"),
-    city: document.querySelector("input[placeholder='City']"),
-    date: document.querySelector("input[placeholder='Expiration Date']"),
-    country: document.querySelector("input[placeholder='Country']"),
-    province: document.querySelector("input[placeholder='Province']"),
+    firstName: $("input[placeholder='First Name']"),
+    lastName: $("input[placeholder='Last Name']"),
+    mobile: $("input[placeholder='Mobile Number']"),
+    cardNo: $("input[placeholder='Card No']"),
+    cvv: $("input[placeholder='CVV']"),
+    city: $("input[placeholder='City']"),
+    date: $("input[placeholder='Expiration Date']"),
+    country: $("input[placeholder='Country']"),
+    province: $("input[placeholder='Province']"),
+    cardHolder: $("input[placeholder='Card Holder Name']"),
+    email: $("input[placeholder='Email']"),
+    address: $("input[placeholder='Address']"),
+
+
 };
-
-
-// console.log(FormInputs.firstName);
 
 
 FormInputs.firstName.onkeyup = () => {
@@ -661,9 +661,62 @@ FormInputs.province.onkeyup = () => {
     }
 }
 
+FormInputs.cardHolder.onkeyup = () => {
+    if (FormInputs.cardHolder.value != '') {
+        if (/[A-Z]{1}[a-z]{2,15}\s[A-Z]{1}[a-z]{2,15}$/.test(FormInputs.cardHolder.value)) {
+            FormInputs.cardHolder.style.border = '2px solid #00E676';
+        } else {
+            FormInputs.cardHolder.style.border = '2px solid #f44336';
+        }
+    } else {
+        FormInputs.cardHolder.style.border = '.5px solid rgba(0,0,0,0.1)';
+    }
+}
+
+FormInputs.email.onkeyup = () => {
+    if (FormInputs.email.value != '') {
+        if (/\w(\w|[!#$%&'*\+\/=?^_`{|}~])*([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+/.test(FormInputs.email.value)) {
+            FormInputs.email.style.border = '2px solid #00E676';
+        } else {
+            FormInputs.email.style.border = '2px solid #f44336';
+        }
+    } else {
+        FormInputs.email.style.border = '.5px solid rgba(0,0,0,0.1)';
+    }
+}
+
+FormInputs.address.onkeyup = () => {
+    if (FormInputs.address.value != '') {
+        if (/^[a-zA-Z0-9\s,'-.]*$/.test(FormInputs.address.value)) {
+            FormInputs.address.style.border = '2px solid #00E676';
+        } else {
+            FormInputs.address.style.border = '2px solid #f44336';
+        }
+    } else {
+        FormInputs.address.style.border = '.5px solid rgba(0,0,0,0.1)';
+    }
+}
+
 
 $('.checkoutForm').onsubmit = (event) => {
     event.preventDefault();
-    console.log('hi');
-}
+    alert('Payment Sucessfull');
 
+    counter = 0;
+    let removeItem = $$('.cart-items .item .removeCartItem');
+    removeItem.forEach(button => {
+        button.parentElement.style.transform = 'translateX(-200%)';
+        setTimeout(function () {
+            button.parentElement.remove();
+        }, 400);
+        counter -= 1;
+
+        $('.cart span').innerText = counter;
+        price = button.parentElement.querySelector('h1.item-price').innerText;
+        price = price.substring(1, price.length - 3);
+        total -= +price;
+        $('.total').innerText = "$" + total + " CAD";
+        $('.cart span').innerText = counter;
+        window.location.href = 'index.html';
+    })
+}

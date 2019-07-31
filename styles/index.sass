@@ -546,11 +546,11 @@ nav.side-nav
     box-shadow:  0 0 60px rgba(#000,.2)   
     will-change: transform
     overflow: visible
-    scroll-snap-type: y mandatory;
+    // scroll-snap-type: y mandatory;
     .total
         text-align: right
         color: #00E676 !important
-        @media (max-width: 756px)
+        @media (max-width: 500px)
             text-align: left
     .item-counter
         color: white
@@ -574,7 +574,9 @@ nav.side-nav
         top: 0
         z-index: 1
         background: #fff
-        scroll-snap-align: start
+        // display: none
+        // scroll-snap-align: start
+
 
     .cart-icon
         @include centered
@@ -590,8 +592,8 @@ nav.side-nav
     .cart-items
         position: relative
         transition: transform .3s ease-in-out  
-        height: 100%
-        scroll-snap-align: start
+        // height: 100%
+        // scroll-snap-align: start
         .item
             position: relative
             display: none
@@ -641,7 +643,7 @@ nav.side-nav
         transition: transform .3s ease-in-out 
         // align-content: center
         h1
-            color: $accent-light       
+            // color: $accent-light       
         label
             color: rgba(#000,0.7);            
             margin-top: 4px
@@ -662,24 +664,9 @@ nav.side-nav
         .submit, .reset
             background: $accent-light
             color: #fff
+        .cartHeading
+            grid-column: span 2    
 
-    
-    
-    // .next-page
-    //     width: 40px
-    //     height: 40px
-    //     // box-shadow: 0 0 4px rgba(0,0,0,.3)
-    //     background: #00E676
-    //     position: fixed
-    //     bottom: 30px
-    //     left: 50%
-    //     transform: translateX(-50%) scale(0) rotate(0) 
-    //     transition: all .1s ease-in-out
-    //     transition-delay: 0ms
-    //     z-index: 1
-    //     padding: 10px
-    //     fill: #fff
-    //     border-radius: 50%  
 
 .openCart
     position: fixed
@@ -700,17 +687,21 @@ nav.side-nav
     hr
         opacity: 0.05
 
-    form.checkoutForm,.paymentForm
+    form.checkoutForm
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-gap: 1em
+        // height: max-content 
         
         label
             align-self: center
         input    
             align-self: center
         @media (max-width: 500px)
-            grid-template-columns: 1fr;          
+            grid-template-columns: 1fr; 
+            .cartHeading
+                grid-column: 1
+
 
     svg.closeCart
         position: absolute

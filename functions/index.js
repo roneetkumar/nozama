@@ -459,20 +459,6 @@ function login() {
     }
 }
 
-// let lazyImages = $$('.lazy-img');
-// let inAdvance = 300;
-// lazy loading images
-// function lazyLoad() {
-//     lazyImages.forEach(image => {
-//         if (image.offsetTop < window.innerHeight + window.pageYOffset + inAdvance) {
-//             image.src = image.dataset.src;
-//             image.onload = () => image.classList.add('loaded');
-//             console.log(image.src);
-//         }
-//     });
-// }
-// lazyLoad();
-
 let counter = 0;
 let total = 0;
 for (let i = 0; i < buttons.length; i++) {
@@ -540,8 +526,6 @@ let FormInputs = {
     cardHolder: $("input[placeholder='Card Holder Name']"),
     email: $("input[placeholder='Email']"),
     address: $("input[placeholder='Address']"),
-
-
 };
 
 
